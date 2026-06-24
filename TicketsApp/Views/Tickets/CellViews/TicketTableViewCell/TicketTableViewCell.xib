@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TicketTableViewCell" rowHeight="130" id="KGk-i7-Jjw" customClass="TicketTableViewCell" customModule="TicketsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnt-nr-Vew" userLabel="Container View">
+                        <rect key="frame" x="16" y="8" width="361" height="114"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ind-lf-Tbx" userLabel="Left Indicator View">
+                                <rect key="frame" x="0.0" y="0.0" width="4" height="114"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="4" id="wId-tH-C00"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="111123546" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tck-Id-Lbl">
+                                <rect key="frame" x="20" y="16" width="81" height="19.333333333333332"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="24" translatesAutoresizingMaskIntoConstraints="NO" id="tag-St-Vew" customClass="TicketStatusTagView" customModule="TicketsApp" customModuleProvider="target">
+                                <rect key="frame" x="275" y="16" width="70" height="24"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network issue" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iss-Ue-Lbl">
+                                <rect key="frame" x="20" y="47.333333333333336" width="325" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="29, Apr, 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dat-Ea-Lbl">
+                                <rect key="frame" x="20" y="72.333333333333314" width="325" height="25.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ind-lf-Tbx" firstAttribute="leading" secondItem="cnt-nr-Vew" secondAttribute="leading" id="4nd-V2-B0c"/>
+                            <constraint firstAttribute="trailing" secondItem="tag-St-Vew" secondAttribute="trailing" constant="16" id="Cta-gW-y0u"/>
+                            <constraint firstAttribute="trailing" secondItem="iss-Ue-Lbl" secondAttribute="trailing" constant="16" id="F5z-4C-vBv"/>
+                            <constraint firstItem="dat-Ea-Lbl" firstAttribute="leading" secondItem="ind-lf-Tbx" secondAttribute="trailing" constant="16" id="FDa-qD-A8M"/>
+                            <constraint firstAttribute="bottom" secondItem="dat-Ea-Lbl" secondAttribute="bottom" constant="16" id="J6U-22-m8k"/>
+                            <constraint firstAttribute="trailing" secondItem="dat-Ea-Lbl" secondAttribute="trailing" constant="16" id="KL0-8b-xCa"/>
+                            <constraint firstItem="tck-Id-Lbl" firstAttribute="leading" secondItem="ind-lf-Tbx" secondAttribute="trailing" constant="16" id="M5e-bU-e5K"/>
+                            <constraint firstItem="dat-Ea-Lbl" firstAttribute="top" secondItem="iss-Ue-Lbl" secondAttribute="bottom" constant="8" id="Q0B-aN-tqA"/>
+                            <constraint firstItem="tck-Id-Lbl" firstAttribute="top" secondItem="cnt-nr-Vew" secondAttribute="top" constant="16" id="S0x-aJ-Z9w"/>
+                            <constraint firstAttribute="bottom" secondItem="ind-lf-Tbx" secondAttribute="bottom" id="XkI-2e-A8M"/>
+                            <constraint firstItem="iss-Ue-Lbl" firstAttribute="leading" secondItem="ind-lf-Tbx" secondAttribute="trailing" constant="16" id="b0a-xK-D4b"/>
+                            <constraint firstItem="iss-Ue-Lbl" firstAttribute="top" secondItem="tck-Id-Lbl" secondAttribute="bottom" constant="12" id="h8X-Lq-qP0"/>
+                            <constraint firstItem="ind-lf-Tbx" firstAttribute="top" secondItem="cnt-nr-Vew" secondAttribute="top" id="xI9-E6-yA8"/>
+                            <constraint firstItem="tag-St-Vew" firstAttribute="top" secondItem="cnt-nr-Vew" secondAttribute="top" constant="16" id="xU7-C2-B0d"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cnt-nr-Vew" secondAttribute="trailing" constant="16" id="6L4-F2-D5A"/>
+                    <constraint firstItem="cnt-nr-Vew" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="TfC-qM-F3J"/>
+                    <constraint firstItem="cnt-nr-Vew" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="aC8-Jd-E5N"/>
+                    <constraint firstAttribute="bottom" secondItem="cnt-nr-Vew" secondAttribute="bottom" constant="8" id="l8g-Wb-H0z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="cnt-nr-Vew" id="out-cnt-01"/>
+                <outlet property="dateLabel" destination="dat-Ea-Lbl" id="out-dat-02"/>
+                <outlet property="issueLabel" destination="iss-Ue-Lbl" id="out-iss-03"/>
+                <outlet property="leftIndicatorView" destination="ind-lf-Tbx" id="out-ind-04"/>
+                <outlet property="statusTagView" destination="tag-St-Vew" id="out-tag-05"/>
+                <outlet property="ticketIdLabel" destination="tck-Id-Lbl" id="out-tck-06"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

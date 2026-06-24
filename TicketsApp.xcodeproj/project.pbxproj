@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		524911C02FEB781F0083FAE9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 524911BF2FEB781F0083FAE9 /* RxCocoa */; };
+		524911C22FEB78230083FAE9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 524911C12FEB78230083FAE9 /* RxSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5249118F2FEB6F450083FAE9 /* TicketsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524911C22FEB78230083FAE9 /* RxSwift in Frameworks */,
+				524911C02FEB781F0083FAE9 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				524911912FEB6F450083FAE9 /* TicketsApp */,
+				524911BE2FEB781F0083FAE9 /* Frameworks */,
 				524911902FEB6F450083FAE9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +64,13 @@
 				5249118F2FEB6F450083FAE9 /* TicketsApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		524911BE2FEB781F0083FAE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +93,8 @@
 			);
 			name = TicketsApp;
 			packageProductDependencies = (
+				524911BF2FEB781F0083FAE9 /* RxCocoa */,
+				524911C12FEB78230083FAE9 /* RxSwift */,
 			);
 			productName = TicketsApp;
 			productReference = 5249118F2FEB6F450083FAE9 /* TicketsApp.app */;
@@ -107,6 +124,9 @@
 			);
 			mainGroup = 524911862FEB6F450083FAE9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				524911BD2FEB77D00083FAE9 /* XCRemoteSwiftPackageReference "rxswift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 524911902FEB6F450083FAE9 /* Products */;
 			projectDirPath = "";
@@ -149,7 +169,6 @@
 				INFOPLIST_FILE = TicketsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -180,7 +199,6 @@
 				INFOPLIST_FILE = TicketsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -341,6 +359,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		524911BD2FEB77D00083FAE9 /* XCRemoteSwiftPackageReference "rxswift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reactivex/rxswift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		524911BF2FEB781F0083FAE9 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 524911BD2FEB77D00083FAE9 /* XCRemoteSwiftPackageReference "rxswift" */;
+			productName = RxCocoa;
+		};
+		524911C12FEB78230083FAE9 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 524911BD2FEB77D00083FAE9 /* XCRemoteSwiftPackageReference "rxswift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 524911872FEB6F450083FAE9 /* Project object */;
 }
