@@ -31,12 +31,12 @@ class TicketsViewModel {
         ]
 
         let dummyTickets = [
-            Ticket(id: "2004", issueType: "Network issue", date: "24 Jun 2026", status: .progress),
-            Ticket(id: "2005", issueType: "Skill issue", date: "23 Jun 2026", status: .resolved),
-            Ticket(id: "2006", issueType: "Trust issue", date: "21 Jun 2026", status: .progress),
-            Ticket(id: "2007", issueType: "Famely issue", date: "18 Jun 2026", status: .closed),
-            Ticket(id: "2008", issueType: "Angar issue", date: "15 Jun 2026", status: .closed),
-            Ticket(id: "2010", issueType: "IDK issue", date: "10 Jun 2026", status: .resolved)
+            Ticket(id: "2004", title: "Network issue", date: "24 Jun 2026", status: .progress),
+            Ticket(id: "2005", title: "Skill issue", date: "23 Jun 2026", status: .resolved),
+            Ticket(id: "2006", title: "Trust issue", date: "21 Jun 2026", status: .progress),
+            Ticket(id: "2007", title: "Famely issue", date: "18 Jun 2026", status: .closed),
+            Ticket(id: "2008", title: "Angar issue", date: "15 Jun 2026", status: .closed),
+            Ticket(id: "2010", title: "IDK issue", date: "10 Jun 2026", status: .resolved)
         ]
 
         // Emit the dummy data

@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TicketsViewController" customModule="TicketsApp" customModuleProvider="target">
             <connections>
+                <outlet property="filterButton" destination="nMi-1Y-BHP" id="hPz-wq-hFc"/>
+                <outlet property="newTicketButton" destination="tAT-n5-spj" id="Tqg-zo-8RN"/>
                 <outlet property="ticketsTabelView" destination="xCt-HI-ptk" id="pEX-hc-aMH"/>
                 <outlet property="ticketsTotalStatus" destination="YPT-9F-Qb1" id="Xik-pH-MeT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="main-view-connection"/>
@@ -70,7 +72,7 @@
                     <rect key="frame" x="0.0" y="298" width="393" height="554"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAT-n5-spj">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAT-n5-spj" customClass="PlusButton" customModule="TicketsApp" customModuleProvider="target">
                     <rect key="frame" x="254.66666666666666" y="734" width="122.33333333333334" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="R2x-1B-aL8"/>

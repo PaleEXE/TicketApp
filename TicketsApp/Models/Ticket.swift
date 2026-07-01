@@ -8,7 +8,7 @@
 
 struct Ticket {
     let id: String
-    let issueType: String
+    let title: String
     let date: String
     let status: TicketStatus
 }

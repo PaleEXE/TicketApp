@@ -7,33 +7,6 @@
 
 import UIKit
 
-// 1. Define the specific statuses from your design
-enum TicketStatus {
-    case progress
-    case closed
-    case resolved
-
-    var title: String {
-        switch self {
-        case .progress: return "Progress"
-        case .closed: return "Closed"
-        case .resolved: return "Resolved"
-        }
-    }
-
-    var textColor: UIColor {
-        switch self {
-        case .progress: return UIColor.systemOrange
-        case .closed: return UIColor.systemRed
-        case .resolved: return UIColor.systemGreen
-        }
-    }
-
-    var backgroundColor: UIColor {
-        return textColor.withAlphaComponent(0.15)
-    }
-}
-
 class TicketStatusTagView: UIView {
 
     private let titleLabel: UILabel = {

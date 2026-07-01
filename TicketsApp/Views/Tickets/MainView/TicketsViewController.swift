@@ -2,10 +2,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class TicketsViewController: UIViewController {
+class TicketsViewController: AppViewController {
 
     @IBOutlet weak var ticketsTotalStatus: UICollectionView!
     @IBOutlet weak var ticketsTabelView: UITableView!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var newTicketButton: PlusButton!
 
     private let viewModel = TicketsViewModel()
     private let disposeBag = DisposeBag()
@@ -26,6 +28,7 @@ class TicketsViewController: UIViewController {
     private func setupUI() {
         setupCollectionView()
         setupTableView()
+        setupNewTicketButton()
         setupBindings()
     }
 
@@ -51,13 +54,56 @@ class TicketsViewController: UIViewController {
         )
     }
 
+    private func setupNewTicketButton() {
+        newTicketButton.configure(title: "New Ticket")
+    }
+
     private func setupBindings() {
         bindTicketsTotalStatusCollectionView()
         bindTicketsTableView()
+
+        filterButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                self?.presentFilterSheet()
+            })
+            .disposed(by: disposeBag)
+
+        ticketsTabelView.rx.modelSelected(Ticket.self)
+            .asDriver()
+            .drive(onNext: { [weak self] selectedTicket in
+                self?.navigateToTicketDetails(with: selectedTicket)
+            })
+            .disposed(by: disposeBag)
+
+        ticketsTabelView.rx.itemSelected
+            .asDriver()
+            .drive(onNext: { [weak self] indexPath in
+                self?.ticketsTabelView.deselectRow(at: indexPath, animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+    private func navigateToTicketDetails(with ticket: Ticket) {
+        let detailsVC = TicketDetailsView(nibName: "TicketDetailsView", bundle: nil)
+        detailsVC.ticket = ticket
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+
+    private func presentFilterSheet() {
+        let filterVC = FilterViewController()
+
+        if let sheet = filterVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 24
+        }
+
+        present(filterVC, animated: true)
     }
 
     private func bindTicketsTotalStatusCollectionView() {
-        viewModel.summaries.asDriver()
+        viewModel.summaries
+            .asDriver()
             .drive(ticketsTotalStatus.rx.items(
                 cellIdentifier: "TicketsTotalStatusCellView",
                 cellType: TicketsTotalStatusCellView.self
@@ -72,21 +118,18 @@ class TicketsViewController: UIViewController {
     }
 
     private func bindTicketsTableView() {
-            viewModel.tickets.asDriver()
-                .drive(ticketsTabelView.rx.items(
-                    cellIdentifier: "TicketTableViewCell",
-                    cellType: TicketTableViewCell.self
-                )) { _, ticket, cell in
+        viewModel.tickets
+            .asDriver()
+            .drive(ticketsTabelView.rx.items(
+                cellIdentifier: "TicketTableViewCell",
+                cellType: TicketTableViewCell.self
+            )) { _, ticket, cell in
+                let ticketDriver = Driver.just(ticket)
+                cell.configure(ticketDriver: ticketDriver)
 
-                    // Wrap the individual ticket into a Driver to pass to the cell
-                    let ticketDriver = Driver.just(ticket)
-                    cell.configure(ticketDriver: ticketDriver)
-
-                }
-                .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         }
-
-    // MARK: - Layout Configuration
 
     private func configureTicketsTotalStatusCollectionViewLayout() {
         guard let layout = ticketsTotalStatus.collectionViewLayout as? UICollectionViewFlowLayout else { return }
