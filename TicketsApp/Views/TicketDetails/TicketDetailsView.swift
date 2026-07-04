@@ -4,7 +4,14 @@ import RxCocoa
 
 class TicketDetailsView: AppViewController {
 
-    // MARK: - Outlets
+    init() {
+        super.init(nibName: "TicketDetailsView", bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBOutlet weak var detailsCardStack: UIStackView!
     @IBOutlet weak var documentsStack: UIStackView!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -12,74 +19,77 @@ class TicketDetailsView: AppViewController {
     @IBOutlet weak var closeTicketButton: UIButton!
     @IBOutlet weak var addCommentButton: UIButton!
 
-    private let disposeBag = DisposeBag()
+    let statusPill = TicketStatusTagView()
+    lazy var statusRow = TicketDetailsRowView(customRightView: statusPill)
+    let idRow = TicketDetailsRowView()
+    let typeRow = TicketDetailsRowView()
+    let dateRow = TicketDetailsRowView()
+    let priorityRow = TicketDetailsRowView()
 
-    // --- NEW: The Injected Data ---
-    var ticket: Ticket!
+    private let disposeBag = DisposeBag()
+    var vm: TicketDetailsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "View Details"
 
         setupDescriptionTextView()
-        populateData() // Now uses the injected 'ticket'
+        setupStaticRowTitles()
+        layoutCardStack()
     }
 
     private func setupDescriptionTextView() {
         descriptionTextView.textContainerInset = UIEdgeInsets(top: 16, left: 12, bottom: 16, right: 12)
     }
 
-    private func populateData() {
-        // Safeguard in case it somehow loads without a ticket
-        guard let ticket = ticket else { return }
-
-        // 1. Details Box
-        let statusPill = TicketStatusTagView()
-        statusPill.configure(with: ticket.status)
-
-        let statusRow = TicketDetailsRowView(customRightView: statusPill)
-        statusRow.configure(staticTitle: "Status", valueDriver: .empty())
-
-        let idRow = TicketDetailsRowView()
-        idRow.configure(staticTitle: "Ticket ID", valueDriver: .just(ticket.id))
-
-        // Note: Assuming 'type' and 'priority' aren't in your Ticket model yet.
-        // I've kept them as static strings for now, but you can swap them to ticket.type easily later.
-        let typeRow = TicketDetailsRowView()
-        typeRow.configure(staticTitle: "Ticket type", valueDriver: .just("Network issue"))
-
-        let dateRow = TicketDetailsRowView()
-        dateRow.configure(staticTitle: "Date", valueDriver: .just(ticket.date))
-
-        let priorityRow = TicketDetailsRowView()
-        priorityRow.configure(staticTitle: "Priority level", valueDriver: .just("High"))
-
-        [statusRow, idRow, typeRow, dateRow, priorityRow].forEach { detailsCardStack.addArrangedSubview($0) }
+    private func setupStaticRowTitles() {
+        idRow.titleLabel.text = "Ticket ID"
+        dateRow.titleLabel.text = "Date"
+        typeRow.titleLabel.text = "Ticket type"
+        priorityRow.titleLabel.text = "Priority level"
+        statusRow.titleLabel.text = "Status"
     }
 
-    private func createDocumentRow(fileName: String) -> UIView {
-        let row = UIStackView()
-        row.axis = .horizontal
-        row.spacing = 12
-        row.alignment = .center
+    private func layoutCardStack() {
+        [statusRow, idRow, typeRow, dateRow, priorityRow].forEach { detailsCardStack.addArrangedSubview($0) }
 
-        let icon = UIImageView(image: UIImage(systemName: "doc"))
-        icon.tintColor = .lightGray
-        icon.setContentHuggingPriority(.required, for: .horizontal)
+    }
 
-        let label = UILabel()
-        label.text = fileName
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+    func bind(to vm: TicketDetailsViewModel) {
+        self.vm = vm
+        self.loadViewIfNeeded() // i hate ts
 
-        let eyeBtn = UIButton(type: .system)
-        eyeBtn.setImage(UIImage(systemName: "eye"), for: .normal)
-        eyeBtn.setContentHuggingPriority(.required, for: .horizontal)
+        self.vm.id
+            .asDriver()
+            .drive(self.idRow.valueLabel.rx.text)
+            .disposed(by: disposeBag)
 
-        row.addArrangedSubview(icon)
-        row.addArrangedSubview(label)
-        row.addArrangedSubview(eyeBtn)
+        self.vm.date
+            .asDriver()
+            .drive(self.dateRow.valueLabel.rx.text)
+            .disposed(by: disposeBag)
 
-        row.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        return row
+        self.vm.description
+            .asDriver()
+            .drive(self.descriptionTextView.rx.text)
+            .disposed(by: disposeBag)
+
+        self.vm.priority
+            .asDriver()
+            .map { $0.title }
+            .drive(self.priorityRow.valueLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        self.vm.title
+            .asDriver()
+            .drive(self.typeRow.valueLabel.rx.text)
+            .disposed(by: disposeBag)
+    
+        self.vm.status
+            .asDriver()
+            .drive(onNext: { [weak self] status in
+                self?.statusPill.configure(with: status)
+            })
+            .disposed(by: disposeBag)
     }
 }

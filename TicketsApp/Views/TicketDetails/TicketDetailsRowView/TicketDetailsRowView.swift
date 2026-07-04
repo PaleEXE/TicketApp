@@ -11,7 +11,7 @@ import RxCocoa
 
 class TicketDetailsRowView: UIView {
 
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .darkGray
@@ -19,13 +19,15 @@ class TicketDetailsRowView: UIView {
         return label
     }()
 
-    private let valueLabel: UILabel = {
+    let valueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .black
         label.textAlignment = .right
         return label
     }()
+
+    var customRightView: UIView = UIView()
 
     private let spacerView: UIView = {
         let view = UIView()
@@ -57,6 +59,7 @@ class TicketDetailsRowView: UIView {
 
     convenience init(customRightView: UIView) {
         self.init(frame: .zero)
+        self.customRightView = customRightView
         valueLabel.isHidden = true
         stackView.addArrangedSubview(customRightView)
     }

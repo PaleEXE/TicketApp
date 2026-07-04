@@ -9,18 +9,10 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct TicketSummary {
-    let count: String
-    let status: TicketStatus
-}
-
-// MARK: - ViewModel
-
 class TicketsViewModel {
-
-    // Relays for our views to bind to
     let summaries = BehaviorRelay<[TicketSummary]>(value: [])
     let tickets = BehaviorRelay<[Ticket]>(value: [])
+    let selectedFilterOptions = BehaviorRelay<[FilterOption]>(value: [])
 
     func fetchDummyData() {
 
@@ -31,15 +23,14 @@ class TicketsViewModel {
         ]
 
         let dummyTickets = [
-            Ticket(id: "2004", title: "Network issue", date: "24 Jun 2026", status: .progress),
-            Ticket(id: "2005", title: "Skill issue", date: "23 Jun 2026", status: .resolved),
-            Ticket(id: "2006", title: "Trust issue", date: "21 Jun 2026", status: .progress),
-            Ticket(id: "2007", title: "Famely issue", date: "18 Jun 2026", status: .closed),
-            Ticket(id: "2008", title: "Angar issue", date: "15 Jun 2026", status: .closed),
-            Ticket(id: "2010", title: "IDK issue", date: "10 Jun 2026", status: .resolved)
+            Ticket(id: "2004", title: "Network issue", date: "24 Jun 2026", priority: .low, status: .progress),
+            Ticket(id: "2005", title: "Skill issue", date: "23 Jun 2026", description: "I hate me", priority: .high, status: .resolved),
+            Ticket(id: "2006", title: "Trust issue", date: "21 Jun 2026", priority: .medium, status: .progress),
+            Ticket(id: "2007", title: "Famely issue", date: "18 Jun 2026", priority: .mimi, status: .closed),
+            Ticket(id: "2008", title: "Angar issue", date: "15 Jun 2026", priority: .mimi, status: .closed),
+            Ticket(id: "2010", title: "IDK issue", date: "10 Jun 2026", priority: .low, status: .resolved)
         ]
 
-        // Emit the dummy data
         summaries.accept(dummySummaries)
         tickets.accept(dummyTickets)
     }

@@ -8,13 +8,11 @@ final class TicketTableViewCell: UITableViewCell {
     @IBOutlet weak var leftIndicatorView: UIView!
 
     @IBOutlet weak var ticketIdLabel: UILabel!
-    @IBOutlet weak var issueLabel: UILabel! // Added missing outlet
+    @IBOutlet weak var issueLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
 
-    // Changed from UIView to TicketStatusTagView
     @IBOutlet weak var statusTagView: TicketStatusTagView!
 
-    // 1. Add the DisposeBag
     private var disposeBag = DisposeBag()
 
     override func awakeFromNib() {

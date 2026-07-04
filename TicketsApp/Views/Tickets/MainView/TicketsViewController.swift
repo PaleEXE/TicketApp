@@ -7,9 +7,11 @@ class TicketsViewController: AppViewController {
     @IBOutlet weak var ticketsTotalStatus: UICollectionView!
     @IBOutlet weak var ticketsTabelView: UITableView!
     @IBOutlet weak var filterButton: UIButton!
-    @IBOutlet weak var newTicketButton: PlusButton!
+    @IBOutlet weak var newTicketButton: UIButton!
+    @IBOutlet weak var selectedFiltersCollectionView: UICollectionView!
+    @IBOutlet weak var selectedFiltersView: UIView!
 
-    private let viewModel = TicketsViewModel()
+    private let vm = TicketsViewModel()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -17,7 +19,7 @@ class TicketsViewController: AppViewController {
         title = "Tickets"
         setupUI()
 
-        viewModel.fetchDummyData()
+        vm.fetchDummyData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -40,6 +42,14 @@ class TicketsViewController: AppViewController {
             UINib(nibName: "TicketsTotalStatusCellView", bundle: nil),
             forCellWithReuseIdentifier: "TicketsTotalStatusCellView"
         )
+
+        selectedFiltersCollectionView.showsHorizontalScrollIndicator = false
+        selectedFiltersCollectionView.backgroundColor = .clear
+
+        selectedFiltersCollectionView.register(
+            UINib(nibName: "FilterCollectionViewCell", bundle: nil),
+            forCellWithReuseIdentifier: "FilterCollectionViewCell"
+        )
     }
 
     private func setupTableView() {
@@ -55,10 +65,11 @@ class TicketsViewController: AppViewController {
     }
 
     private func setupNewTicketButton() {
-        newTicketButton.configure(title: "New Ticket")
+        //newTicketButton(title: "New Ticket")
     }
 
     private func setupBindings() {
+        bindSelectedFilters()
         bindTicketsTotalStatusCollectionView()
         bindTicketsTableView()
 
@@ -84,31 +95,80 @@ class TicketsViewController: AppViewController {
             .disposed(by: disposeBag)
     }
     private func navigateToTicketDetails(with ticket: Ticket) {
-        let detailsVC = TicketDetailsView(nibName: "TicketDetailsView", bundle: nil)
-        detailsVC.ticket = ticket
+        let detailsVC = TicketDetailsView()
+        detailsVC.bind(to: TicketDetailsViewModel(model: ticket))
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 
     private func presentFilterSheet() {
-        let filterVC = FilterViewController()
+        let filterVC = FilterViewController(alreadySelected: vm.selectedFilterOptions.value)
 
         if let sheet = filterVC.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+            sheet.detents = [.medium()]
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 24
         }
 
         present(filterVC, animated: true)
+
+        filterVC.applyTapped
+            .bind(to: self.vm.selectedFilterOptions)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindSelectedFilters() {
+        guard let layout = selectedFiltersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+
+        layout.itemSize = CGSize(
+            width:  layout.itemSize.width,
+            height: selectedFiltersCollectionView.bounds.height,
+        )
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = 8
+
+        layout.invalidateLayout()
+
+        selectedFiltersCollectionView.rx
+                .setDelegate(self)
+                .disposed(by: disposeBag)
+
+        vm.selectedFilterOptions
+            .asDriver()
+            .drive(selectedFiltersCollectionView.rx.items(
+                cellIdentifier: "FilterCollectionViewCell",
+                cellType: FilterCollectionViewCell.self
+            )) { _, opt, cell in
+                let vm = FilterCollectionViewCellModel(model: opt)
+                cell.bind(to: vm)
+            }
+            .disposed(by: disposeBag)
+
+        vm.selectedFilterOptions
+            .map { $0.isEmpty }
+            .asDriver(onErrorJustReturn: true)
+            .drive(selectedFiltersView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        selectedFiltersCollectionView.rx
+            .modelSelected(FilterOption.self)
+            .subscribe(onNext: { tappedOpt in
+                var opts = self.vm.selectedFilterOptions.value
+                opts.removeAll(where: { $0.label == tappedOpt.label })
+                self.vm.selectedFilterOptions.accept(opts)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindTicketsTotalStatusCollectionView() {
-        viewModel.summaries
+        vm.summaries
             .asDriver()
             .drive(ticketsTotalStatus.rx.items(
                 cellIdentifier: "TicketsTotalStatusCellView",
                 cellType: TicketsTotalStatusCellView.self
             )) { _, summary, cell in
-
                 let countDriver = Driver.just(summary.count)
                 let statusDriver = Driver.just(summary.status)
 
@@ -118,7 +178,7 @@ class TicketsViewController: AppViewController {
     }
 
     private func bindTicketsTableView() {
-        viewModel.tickets
+        vm.tickets
             .asDriver()
             .drive(ticketsTabelView.rx.items(
                 cellIdentifier: "TicketTableViewCell",
@@ -150,5 +210,37 @@ class TicketsViewController: AppViewController {
         let cellWidth = floor(availableWidth / numberOfVisibleCells)
 
         layout.itemSize = CGSize(width: cellWidth, height: ticketsTotalStatus.bounds.height)
+    }
+}
+
+
+extension TicketsViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let options = vm.selectedFilterOptions.value
+        guard indexPath.row < options.count else { return .zero }
+
+        let text = options[indexPath.row].label
+
+        let font = UIFont.systemFont(ofSize: 17)
+        let textAttributes = [NSAttributedString.Key.font: font]
+
+        let maxExpectedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: collectionView.bounds.height)
+
+        let textWidth = text.boundingRect(
+            with: maxExpectedSize,
+            options: [.usesLineFragmentOrigin],
+            attributes: textAttributes,
+            context: nil
+        ).width
+
+        let leftRightEdgePadding: CGFloat = 24
+        let imageWidth: CGFloat = 20.33
+        let stackSpacing: CGFloat = 6
+
+        let totalComputedWidth = ceil(textWidth + leftRightEdgePadding + imageWidth + stackSpacing)
+
+        return CGSize(width: totalComputedWidth, height: collectionView.bounds.height)
     }
 }
