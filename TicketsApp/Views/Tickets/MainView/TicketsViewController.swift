@@ -65,7 +65,12 @@ class TicketsViewController: AppViewController {
     }
 
     private func setupNewTicketButton() {
-        //newTicketButton(title: "New Ticket")
+        newTicketButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                self?.navigationController?.pushViewController(NewTicketViewController(), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setupBindings() {

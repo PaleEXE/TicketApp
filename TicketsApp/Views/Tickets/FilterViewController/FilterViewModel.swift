@@ -9,10 +9,10 @@ import RxCocoa
 
 class FilterViewModel {
     let filterOptions = BehaviorRelay(value: [
-        FilterOption(label: "All", isSelected: true, isAll: true),
-        FilterOption(label: "Closed"),
-        FilterOption(label: "Resolved"),
-        FilterOption(label: "Progress")
+        FilterOption(label: "All", key: "all", isSelected: true),
+        FilterOption(label: "Closed", key: "cls"),
+        FilterOption(label: "Resolved", key: "res"),
+        FilterOption(label: "Progress", key: "prg")
     ])
 
     let selectedOption = BehaviorRelay<FilterOption?>(value: nil)
@@ -26,8 +26,13 @@ class FilterViewModel {
 
                 let options = self.filterOptions.value
 
-                options.forEach { opt in
-                    opt.isSelected = self.selectedOptions.value.contains(where: { $0.label == opt.label })
+                if opts.isEmpty {
+                    let index = options.firstIndex(where: { $0.key == "all"})!
+                    options[index].isSelected = true
+                } else {
+                    options.forEach { opt in
+                        opt.isSelected = self.selectedOptions.value.contains(where: { $0 == opt })
+                    }
                 }
 
                 filterOptions.accept(options)
@@ -41,46 +46,23 @@ class FilterViewModel {
                 guard let self,
                       let tapped else { return }
 
-                var options = self.filterOptions.value
                 var selected = self.selectedOptions.value
 
-                guard let index = options.firstIndex(where: { $0.label == tapped.label }) else { return }
-
-                let isAll = options[index].isAll
-
-                if isAll {
-                    options = options.map {
-                        let copy = $0
-                        copy.isSelected = ($0.isAll)
-                        return copy
-                    }
-
+                if tapped.key == "all" {
                     selected.removeAll()
                 } else {
-                    options[index].isSelected.toggle()
-                    if let allIndex = options.firstIndex(where: { $0.isAll }) {
-                        options[allIndex].isSelected = false
-                    }
-
-                    if options[index].isSelected {
-                        selected.append(options[index])
+                    selected.removeAll(where: { $0.key == "all" })
+                    let opt =  self.filterOptions.value.first(where: { $0 == tapped })
+                    opt?.isSelected.toggle()
+                    if opt?.isSelected == true {
+                        selected.append(opt!)
+                    } else if opt?.isSelected == false {
+                        selected.removeAll(where: { $0 == opt! })
                     } else {
-                        selected.removeAll { $0.label == options[index].label }
-                    }
-
-                    if selected.isEmpty {
-                        if let allIndex = options.firstIndex(where: { $0.isAll }) {
-                            options = options.map {
-                                let copy = $0
-                                copy.isSelected = false
-                                return copy
-                            }
-                            options[allIndex].isSelected = true
-                        }
+                        print("NUH UH")
                     }
                 }
 
-                self.filterOptions.accept(options)
                 self.selectedOptions.accept(selected)
             })
             .disposed(by: disposeBag)

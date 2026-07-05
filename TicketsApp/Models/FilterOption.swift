@@ -5,14 +5,18 @@
 //  Created by test on 02/07/2026.
 //
 
-class FilterOption {
+class FilterOption: Equatable {
     let label: String
+    let key: String
     var isSelected: Bool
-    let isAll: Bool
 
-    init(label: String, isSelected: Bool = false, isAll: Bool = false) {
+    init(label: String, key: String, isSelected: Bool = false) {
         self.label = label
+        self.key = key
         self.isSelected = isSelected
-        self.isAll = isAll
+    }
+
+    static func == (lhs: FilterOption, rhs: FilterOption) -> Bool {
+        return lhs.key == rhs.key
     }
 }

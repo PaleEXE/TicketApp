@@ -37,7 +37,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
             .drive(filterLabel.rx.text)
             .disposed(by: disposeBag)
 
-        /*self.vm.isSelected
+        self.vm.isSelected
             .map { $0 ? .systemBlue : .lightGray.withAlphaComponent(0.2)}
             .asDriver(onErrorJustReturn: .purple)
             .drive(roundedView.rx.backgroundColor)
@@ -52,25 +52,6 @@ class FilterCollectionViewCell: UICollectionViewCell {
         self.vm.isSelected
             .asDriver(onErrorJustReturn: false)
             .drive(plusImage.rx.isHidden)
-            .disposed(by: disposeBag)*/
-
-        Observable
-            .combineLatest(self.vm.isAll, self.vm.isSelected)
-            .subscribe(onNext: {[weak self] isAll, isSelected in
-                guard let self else { return }
-
-                let isActive = isSelected
-
-                if isActive {
-                    self.roundedView.backgroundColor = .systemBlue
-                    self.filterLabel.textColor = .bg
-                    self.plusImage.isHidden = true
-                } else {
-                    self.roundedView.backgroundColor = .lightGray.withAlphaComponent(0.2)
-                    self.filterLabel.textColor = .systemGray
-                    self.plusImage.isHidden = false
-                }
-            })
             .disposed(by: disposeBag)
     }
 }
