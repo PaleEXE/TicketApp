@@ -14,6 +14,19 @@ import UIKit
             setNeedsLayout()
         }
     }
+
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+
+    @IBInspectable var borderColor: UIColor = .white {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
 

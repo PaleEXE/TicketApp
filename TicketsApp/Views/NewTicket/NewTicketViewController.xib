@@ -12,8 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTicketViewController" customModule="TicketsApp" customModuleProvider="target">
             <connections>
                 <outlet property="priorityCollectionView" destination="vBq-ds-1df" id="zak-Vk-Gql"/>
-                <outlet property="ticketSubTypeSelector" destination="Dkr-S9-4fS" id="EDN-zg-DCT"/>
-                <outlet property="ticketTypeSelector" destination="Y1J-Eb-Xdm" id="oBs-Bh-MGf"/>
+                <outlet property="ticketSubTypeTextField" destination="Dkr-S9-4fS" id="EDN-zg-DCT"/>
+                <outlet property="ticketTypeTextField" destination="Y1J-Eb-Xdm" id="oBs-Bh-MGf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="0fE-T5-lTv"/>
             </connections>
         </placeholder>
@@ -31,20 +31,20 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-Bo-LQA">
                                     <rect key="frame" x="0.0" y="0.0" width="361" height="64"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qz-lU-zrt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ticket Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qz-lU-zrt">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1J-Eb-Xdm">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y1J-Eb-Xdm" customClass="PickerTextField" customModule="TicketsApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="22" width="361" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="RPF-ak-w4p"/>
                                             </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="gray" title="Select Ticket Type"/>
-                                        </button>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="3QW-Sp-nD8"/>
@@ -53,17 +53,17 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-pP-1dY">
                                     <rect key="frame" x="0.0" y="76" width="361" height="64"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-Np-JKR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ticket sub Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-Np-JKR">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dkr-S9-4fS">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dkr-S9-4fS" customClass="PickerTextField" customModule="TicketsApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="24.333333333333339" width="361" height="39.666666666666657"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="gray" title="Button"/>
-                                        </button>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="X02-i9-MPZ"/>
@@ -80,7 +80,7 @@
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-ds-1df">
                                             <rect key="frame" x="0.0" y="30" width="361" height="42"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" name="bgColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="bJg-ct-VKw"/>
                                             </constraints>

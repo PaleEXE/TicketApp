@@ -1,20 +1,15 @@
-//
-//  NewTicketViewController.swift
-//  TicketsApp
-//
-//  Created by test on 04/07/2026.
-//
-
 import UIKit
 import RxSwift
 import RxCocoa
 
-
 class NewTicketViewController: AppViewController {
 
-    @IBOutlet weak var ticketTypeSelector: UIButton!
-    @IBOutlet weak var ticketSubTypeSelector: UIButton!
+    @IBOutlet weak var ticketTypeTextField: PickerTextField!
+    @IBOutlet weak var ticketSubTypeTextField: PickerTextField!
     @IBOutlet weak var priorityCollectionView: UICollectionView!
+
+    private let ticketTypePicker = UIPickerView()
+    private let ticketSubTypePicker = UIPickerView()
 
     let vm = NewTicketViewModel()
     let disposeBag = DisposeBag()
@@ -34,28 +29,42 @@ class NewTicketViewController: AppViewController {
     }
 
     func setupUI() {
-        setupTicketTypeSelector(menuButton: ticketTypeSelector, menuOptions: vm.ticketTypes.value)
-        setupTicketTypeSelector(menuButton: ticketSubTypeSelector, menuOptions: vm.ticketSubTypes.value)
+        setupPicker(textField: ticketTypeTextField, pickerView: ticketTypePicker, data: vm.ticketTypes)
+        setupPicker(textField: ticketSubTypeTextField, pickerView: ticketSubTypePicker, data: vm.ticketSubTypes)
         setupPriorityCollectionView()
     }
 
-    func setupTicketTypeSelector(menuButton: UIButton, menuOptions: [String]) {
+    private func setupPicker(textField: UITextField, pickerView: UIPickerView, data: BehaviorRelay<[String]>) {
+        textField.inputView = pickerView
+        textField.inputAccessoryView = createToolbar()
 
-        let actions = menuOptions.map { option in
-            UIAction(title: option) { action in
-                print("Selected target filter: \(action.title)")
+        data
+            .bind(to: pickerView.rx.itemTitles) { _, item in
+                return item
             }
-        }
-        menuButton.menu = UIMenu(children: actions)
+            .disposed(by: disposeBag)
 
-        menuButton.showsMenuAsPrimaryAction = true
-        menuButton.changesSelectionAsPrimaryAction = true
+        pickerView.rx.modelSelected(String.self)
+            .subscribe(onNext: { [weak textField] selected in
+                if let title = selected.first {
+                    textField?.text = title
+                    print("Selected target filter: \(title)")
+                }
+            })
+            .disposed(by: disposeBag)
+    }
 
-        if var config = menuButton.configuration {
-            config.image = UIImage(systemName: "chevron.down")
-            config.imagePlacement = .trailing
-            config.imagePadding = 8
-        }
+    private func createToolbar() -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissPicker))
+        toolbar.setItems([flexSpace, doneButton], animated: false)
+        return toolbar
+    }
+
+    @objc private func dismissPicker() {
+        view.endEditing(true)
     }
 
     func setupPriorityCollectionView() {
@@ -65,7 +74,7 @@ class NewTicketViewController: AppViewController {
 
         layout.itemSize = CGSize(
             width:  layout.itemSize.width,
-            height: priorityCollectionView.bounds.height,
+            height: priorityCollectionView.bounds.height
         )
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 8
@@ -79,16 +88,16 @@ class NewTicketViewController: AppViewController {
             .register(UINib(nibName: "PriorityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PriorityCollectionViewCell")
 
         priorityCollectionView.rx
-                .setDelegate(self)
-                .disposed(by: disposeBag)
+            .setDelegate(self)
+            .disposed(by: disposeBag)
 
         vm.priorities
             .bind(to: priorityCollectionView.rx.items(
                 cellIdentifier: "PriorityCollectionViewCell",
                 cellType: PriorityCollectionViewCell.self
             )) { _, pri, cell in
-                let vm = PriorityCollectionViewCellModel(model: pri)
-                cell.bind(to: vm)
+                let cellViewModel = PriorityCollectionViewCellModel(model: pri)
+                cell.bind(to: cellViewModel)
             }
             .disposed(by: disposeBag)
 

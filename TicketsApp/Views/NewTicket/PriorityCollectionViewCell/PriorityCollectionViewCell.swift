@@ -38,9 +38,15 @@ class PriorityCollectionViewCell: UICollectionViewCell {
             .disposed(by: disposeBag)
 
         self.vm.isSelected
-            .map { $0 ? .systemBlue : .systemGray}
+            .map { $0 ? .systemBlue : .clear}
             .asDriver(onErrorJustReturn: .purple)
             .drive(self.roundedView.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
+        self.vm.isSelected
+            .map { $0 ? .bg : .systemBlue}
+            .asDriver(onErrorJustReturn: .purple)
+            .drive(self.priortyLabel.rx.textColor)
             .disposed(by: disposeBag)
     }
 }

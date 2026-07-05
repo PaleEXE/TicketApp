@@ -10,9 +10,9 @@ import RxCocoa
 class FilterViewModel {
     let filterOptions = BehaviorRelay(value: [
         FilterOption(label: "All", key: "all", isSelected: true),
-        FilterOption(label: "Closed", key: "cls"),
-        FilterOption(label: "Resolved", key: "res"),
-        FilterOption(label: "Progress", key: "prg")
+        FilterOption(label: "Closed", key: TicketStatus.closed.key),
+        FilterOption(label: "Resolved", key: TicketStatus.resolved.key),
+        FilterOption(label: "Progress", key: TicketStatus.progress.key)
     ])
 
     let selectedOption = BehaviorRelay<FilterOption?>(value: nil)
@@ -26,13 +26,13 @@ class FilterViewModel {
 
                 let options = self.filterOptions.value
 
+                options.forEach { opt in
+                    opt.isSelected = opts.contains(where: { $0 == opt })
+                }
+
                 if opts.isEmpty {
                     let index = options.firstIndex(where: { $0.key == "all"})!
                     options[index].isSelected = true
-                } else {
-                    options.forEach { opt in
-                        opt.isSelected = self.selectedOptions.value.contains(where: { $0 == opt })
-                    }
                 }
 
                 filterOptions.accept(options)

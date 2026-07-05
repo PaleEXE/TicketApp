@@ -34,6 +34,14 @@
                             <constraint firstAttribute="bottom" secondItem="cEd-s3-DoZ" secondAttribute="bottom" id="Wyx-ku-X7n"/>
                             <constraint firstItem="cEd-s3-DoZ" firstAttribute="top" secondItem="mA6-Mu-OaZ" secondAttribute="top" id="xAX-WE-IxK"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="AccentColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>

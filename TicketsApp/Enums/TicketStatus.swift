@@ -20,6 +20,14 @@ enum TicketStatus {
         }
     }
 
+    var key: String {
+        switch self {
+        case .progress: return "prg"
+        case .closed: return "cls"
+        case .resolved: return "res"
+        }
+    }
+
     var textColor: UIColor {
         switch self {
         case .progress: return UIColor.systemOrange
