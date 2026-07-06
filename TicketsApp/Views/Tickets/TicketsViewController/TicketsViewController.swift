@@ -68,7 +68,9 @@ class TicketsViewController: AppViewController {
         newTicketButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
-                self?.navigationController?.pushViewController(NewTicketViewController(), animated: true)
+                guard let self else { return }
+
+                self.navigationController?.pushViewController(NewTicketViewController(with: self.vm), animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -100,7 +102,7 @@ class TicketsViewController: AppViewController {
             .disposed(by: disposeBag)
     }
     private func navigateToTicketDetails(with ticket: Ticket) {
-        let detailsVC = TicketDetailsView()
+        let detailsVC = TicketDetailsViewController()
         detailsVC.bind(to: TicketDetailsViewModel(model: ticket))
         navigationController?.pushViewController(detailsVC, animated: true)
     }
@@ -126,10 +128,6 @@ class TicketsViewController: AppViewController {
             return
         }
 
-        layout.itemSize = CGSize(
-            width:  layout.itemSize.width,
-            height: selectedFiltersCollectionView.bounds.height,
-        )
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 8
         layout.minimumLineSpacing = 8
@@ -183,7 +181,7 @@ class TicketsViewController: AppViewController {
     }
 
     private func bindTicketsTableView() {
-        vm.tickets
+        vm.filteredTickets
             .asDriver()
             .drive(ticketsTabelView.rx.items(
                 cellIdentifier: "TicketTableViewCell",

@@ -2,10 +2,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class TicketDetailsView: AppViewController {
+class TicketDetailsViewController: AppViewController {
 
     init() {
-        super.init(nibName: "TicketDetailsView", bundle: nil)
+        super.init(nibName: "TicketDetailsViewController", bundle: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -23,6 +23,7 @@ class TicketDetailsView: AppViewController {
     lazy var statusRow = TicketDetailsRowView(customRightView: statusPill)
     let idRow = TicketDetailsRowView()
     let typeRow = TicketDetailsRowView()
+    let subTypeRow = TicketDetailsRowView()
     let dateRow = TicketDetailsRowView()
     let priorityRow = TicketDetailsRowView()
 
@@ -46,6 +47,7 @@ class TicketDetailsView: AppViewController {
         idRow.titleLabel.text = "Ticket ID"
         dateRow.titleLabel.text = "Date"
         typeRow.titleLabel.text = "Ticket type"
+        subTypeRow.titleLabel.text = "Sub type"
         priorityRow.titleLabel.text = "Priority level"
         statusRow.titleLabel.text = "Status"
     }
@@ -80,9 +82,14 @@ class TicketDetailsView: AppViewController {
             .drive(self.priorityRow.valueLabel.rx.text)
             .disposed(by: disposeBag)
 
-        self.vm.title
+        self.vm.type
             .asDriver()
             .drive(self.typeRow.valueLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        self.vm.subType
+            .asDriver()
+            .drive(self.subTypeRow.valueLabel.rx.text)
             .disposed(by: disposeBag)
     
         self.vm.status

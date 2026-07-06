@@ -34,7 +34,6 @@ class TicketsTotalStatusCellView: UICollectionViewCell {
         ])
     }
 
-    // UPDATED: Now accepting Drivers
     func configure(totalDriver: Driver<String>, statusDriver: Driver<TicketStatus>) {
 
         totalDriver

@@ -44,7 +44,7 @@ final class TicketTableViewCell: UITableViewCell {
             .disposed(by: disposeBag)
 
         ticketDriver
-            .map { $0.title }
+            .map { $0.type }
             .drive(onNext: { [weak self] title in
                 self?.issueLabel?.text = title
             })

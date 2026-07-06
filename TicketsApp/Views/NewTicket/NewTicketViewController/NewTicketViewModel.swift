@@ -24,7 +24,7 @@ class NewTicketViewModel {
         "Fast",
         "not"
     ])
-    let selectedSubTicketType: BehaviorRelay<String?> = BehaviorRelay(value: nil)
+    let selectedTicketSubType: BehaviorRelay<String?> = BehaviorRelay(value: nil)
 
     let priorities = BehaviorRelay(value: [
         Priority(priority: .low),
@@ -33,6 +33,8 @@ class NewTicketViewModel {
         Priority(priority: .mimi),
     ])
     let selectedPriority: BehaviorRelay<Priority?> = BehaviorRelay(value: nil)
+
+    let description = BehaviorRelay(value: "")
 
     init() {
         selectedPriority.subscribe(onNext: {pri in

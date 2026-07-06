@@ -11,7 +11,8 @@ import RxCocoa
 
 class TicketDetailsViewModel {
     let id: BehaviorRelay<String>
-    let title: BehaviorRelay<String>
+    let type: BehaviorRelay<String>
+    let subType: BehaviorRelay<String>
     let date: BehaviorRelay<String>
     let description: BehaviorRelay<String>
     let priority: BehaviorRelay<TicketPriority>
@@ -19,7 +20,8 @@ class TicketDetailsViewModel {
 
     init(model: Ticket) {
         self.id = BehaviorRelay(value: model.id)
-        self.title = BehaviorRelay(value: model.title)
+        self.type = BehaviorRelay(value: model.type)
+        self.subType = BehaviorRelay(value: model.subType)
         self.date = BehaviorRelay(value: model.date)
         self.description = BehaviorRelay(value: model.description)
         self.priority = BehaviorRelay(value: model.priority)

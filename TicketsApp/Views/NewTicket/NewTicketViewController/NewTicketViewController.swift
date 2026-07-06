@@ -7,14 +7,17 @@ class NewTicketViewController: AppViewController {
     @IBOutlet weak var ticketTypeTextField: PickerTextField!
     @IBOutlet weak var ticketSubTypeTextField: PickerTextField!
     @IBOutlet weak var priorityCollectionView: UICollectionView!
+    @IBOutlet weak var submitButton: UIButton!
 
     private let ticketTypePicker = UIPickerView()
     private let ticketSubTypePicker = UIPickerView()
 
     let vm = NewTicketViewModel()
+    var ticketsVM = TicketsViewModel()
     let disposeBag = DisposeBag()
 
-    init() {
+    init(with ticketsVM: TicketsViewModel) {
+        self.ticketsVM = ticketsVM
         super.init(nibName: "NewTicketViewController", bundle: nil)
     }
 
@@ -29,12 +32,13 @@ class NewTicketViewController: AppViewController {
     }
 
     func setupUI() {
-        setupPicker(textField: ticketTypeTextField, pickerView: ticketTypePicker, data: vm.ticketTypes)
-        setupPicker(textField: ticketSubTypeTextField, pickerView: ticketSubTypePicker, data: vm.ticketSubTypes)
+        setupPicker(textField: ticketTypeTextField, pickerView: ticketTypePicker, data: vm.ticketTypes, targetRelay: vm.selectedTicketType)
+        setupPicker(textField: ticketSubTypeTextField, pickerView: ticketSubTypePicker, data: vm.ticketSubTypes, targetRelay: vm.selectedTicketSubType)
         setupPriorityCollectionView()
+        setupSubmitButton()
     }
 
-    private func setupPicker(textField: UITextField, pickerView: UIPickerView, data: BehaviorRelay<[String]>) {
+    private func setupPicker(textField: UITextField, pickerView: UIPickerView, data: BehaviorRelay<[String]>, targetRelay: BehaviorRelay<String?>) {
         textField.inputView = pickerView
         textField.inputAccessoryView = createToolbar()
 
@@ -44,13 +48,16 @@ class NewTicketViewController: AppViewController {
             }
             .disposed(by: disposeBag)
 
-        pickerView.rx.modelSelected(String.self)
-            .subscribe(onNext: { [weak textField] selected in
-                if let title = selected.first {
-                    textField?.text = title
-                    print("Selected target filter: \(title)")
-                }
-            })
+        let selection = pickerView.rx.modelSelected(String.self)
+            .compactMap { $0.first }
+            .share()
+
+        selection
+            .bind(to: textField.rx.text)
+            .disposed(by: disposeBag)
+
+        selection
+            .bind(to: targetRelay)
             .disposed(by: disposeBag)
     }
 
@@ -108,6 +115,61 @@ class NewTicketViewController: AppViewController {
                 self.vm.selectedPriority.accept(tappedPriority)
             })
             .disposed(by: disposeBag)
+    }
+
+    func setupSubmitButton() {
+        submitButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+
+                let type = self.vm.selectedTicketType.value
+                let subType = self.vm.selectedTicketSubType.value
+                let priority = self.vm.selectedPriority.value
+
+                if type == nil || type?.isEmpty == true {
+                    self.showAlert(title: "Alert", message: "Please select a ticket type.")
+                    return
+                }
+
+                if subType == nil || subType?.isEmpty == true {
+                    self.showAlert(title: "Alert", message: "Please select a ticket sub-type.")
+                    return
+                }
+
+                if priority == nil {
+                    self.showAlert(title: "Alert", message: "Please select a priority.")
+                    return
+                }
+
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd MMM yyyy"
+                let currentDateString = formatter.string(from: Date())
+
+                let description = self.vm.description.value
+
+                let newTicket = Ticket(
+                    id: "\(2005 + self.ticketsVM.tickets.value.count)",
+                    type: type!,
+                    subType: subType!,
+                    date: currentDateString,
+                    description: description,
+                    priority: priority!.priority,
+                    status: .progress
+                )
+
+                var tickets = self.ticketsVM.tickets.value
+                tickets.append(newTicket)
+                self.ticketsVM.tickets.accept(tickets)
+                self.navigationController?.popViewController(animated: true)
+                showAlert(title: "Sucsess", message: "New ticket was added")
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }
 

@@ -8,15 +8,17 @@
 
 struct Ticket {
     let id: String
-    let title: String
+    let type: String
+    let subType: String
     let date: String
     let description: String
     let priority: TicketPriority
     let status: TicketStatus
 
-    init(id: String, title: String, date: String, description: String = "idk", priority: TicketPriority, status: TicketStatus) {
+    init(id: String, type: String, subType: String = "sui", date: String, description: String = "idk", priority: TicketPriority, status: TicketStatus) {
         self.id = id
-        self.title = title
+        self.type = type
+        self.subType = subType
         self.date = date
         self.description = description
         self.priority = priority

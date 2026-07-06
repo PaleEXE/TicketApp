@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTicketViewController" customModule="TicketsApp" customModuleProvider="target">
             <connections>
                 <outlet property="priorityCollectionView" destination="vBq-ds-1df" id="zak-Vk-Gql"/>
+                <outlet property="submitButton" destination="A5q-8I-qpu" id="RGh-ta-9lA"/>
                 <outlet property="ticketSubTypeTextField" destination="Dkr-S9-4fS" id="EDN-zg-DCT"/>
                 <outlet property="ticketTypeTextField" destination="Y1J-Eb-Xdm" id="oBs-Bh-MGf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="0fE-T5-lTv"/>
@@ -23,15 +24,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGl-Kn-Ki9">
-                    <rect key="frame" x="0.0" y="118" width="393" height="224"/>
+                    <rect key="frame" x="0.0" y="117.99999999999997" width="393" height="392.33333333333326"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UvU-Yh-DPD">
-                            <rect key="frame" x="16" y="0.0" width="361" height="224"/>
+                            <rect key="frame" x="16" y="0.0" width="361" height="324.33333333333331"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3dH-Bo-LQA">
                                     <rect key="frame" x="0.0" y="0.0" width="361" height="64"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ticket Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qz-lU-zrt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qz-lU-zrt">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -42,7 +43,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="RPF-ak-w4p"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -53,7 +54,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-pP-1dY">
                                     <rect key="frame" x="0.0" y="76" width="361" height="64"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ticket sub Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-Np-JKR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket sub Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-Np-JKR">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -61,7 +62,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dkr-S9-4fS" customClass="PickerTextField" customModule="TicketsApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="24.333333333333339" width="361" height="39.666666666666657"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -72,7 +73,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WH9-6m-R2T">
                                     <rect key="frame" x="0.0" y="152" width="361" height="72"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvg-Td-54q">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvg-Td-54q">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="26"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -96,6 +97,27 @@
                                         <constraint firstAttribute="height" constant="72" id="kTq-dD-J6V"/>
                                     </constraints>
                                 </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6bz-HS-dbM">
+                                    <rect key="frame" x="0.0" y="236.00000000000003" width="361" height="88.333333333333343"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9b-r6-Q05">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="I love icecream" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DPc-HG-gNu">
+                                            <rect key="frame" x="0.0" y="24.333333333333314" width="361" height="64"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="6eS-zY-9rz"/>
+                                            </constraints>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" name="bgColor"/>
                         </stackView>
@@ -103,18 +125,26 @@
                     <color key="backgroundColor" name="bgColor"/>
                     <constraints>
                         <constraint firstItem="UvU-Yh-DPD" firstAttribute="top" secondItem="VGl-Kn-Ki9" secondAttribute="top" id="D6y-SX-ei2"/>
-                        <constraint firstAttribute="bottom" secondItem="UvU-Yh-DPD" secondAttribute="bottom" id="MkL-p4-UWR"/>
+                        <constraint firstAttribute="bottom" secondItem="UvU-Yh-DPD" secondAttribute="bottom" constant="68" id="MkL-p4-UWR"/>
                         <constraint firstAttribute="trailing" secondItem="UvU-Yh-DPD" secondAttribute="trailing" constant="16" id="Sx9-9p-93K"/>
                         <constraint firstItem="UvU-Yh-DPD" firstAttribute="leading" secondItem="VGl-Kn-Ki9" secondAttribute="leading" constant="16" id="aLM-Kv-2ih"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-8I-qpu">
+                    <rect key="frame" x="16" y="745.66666666666663" width="361" height="38.333333333333371"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="A5q-8I-qpu" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="05Z-MA-qPR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VGl-Kn-Ki9" secondAttribute="trailing" id="0xw-CN-SkD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VGl-Kn-Ki9" secondAttribute="bottom" id="Ps6-4g-9zY"/>
                 <constraint firstItem="VGl-Kn-Ki9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Udy-JD-RUU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="A5q-8I-qpu" secondAttribute="trailing" constant="16" id="Wy2-lV-4Qs"/>
+                <constraint firstItem="A5q-8I-qpu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="emr-MW-DPe"/>
                 <constraint firstItem="VGl-Kn-Ki9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="nKi-b5-QHO"/>
             </constraints>
             <point key="canvasLocation" x="-144.27480916030532" y="109.85915492957747"/>
@@ -124,6 +154,9 @@
         <namedColor name="bgColor">
             <color red="0.93300002813339233" green="0.96100002527236938" blue="0.98100000619888306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
