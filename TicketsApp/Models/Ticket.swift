@@ -13,7 +13,7 @@ struct Ticket {
     let date: String
     let description: String
     let priority: TicketPriority
-    let status: TicketStatus
+    var status: TicketStatus
 
     init(id: String, type: String, subType: String = "sui", date: String, description: String = "idk", priority: TicketPriority, status: TicketStatus) {
         self.id = id

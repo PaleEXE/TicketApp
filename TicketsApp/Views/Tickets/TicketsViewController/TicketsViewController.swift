@@ -18,8 +18,6 @@ class TicketsViewController: AppViewController {
         super.viewDidLoad()
         title = "Tickets"
         setupUI()
-
-        vm.fetchDummyData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -69,8 +67,7 @@ class TicketsViewController: AppViewController {
             .asDriver()
             .drive(onNext: { [weak self] in
                 guard let self else { return }
-
-                self.navigationController?.pushViewController(NewTicketViewController(with: self.vm), animated: true)
+                self.navigateToNewTicket(as: .newTicket)
             })
             .disposed(by: disposeBag)
     }
@@ -87,10 +84,12 @@ class TicketsViewController: AppViewController {
             })
             .disposed(by: disposeBag)
 
-        ticketsTabelView.rx.modelSelected(Ticket.self)
+        ticketsTabelView.rx
+            .modelSelected(Ticket.self)
             .asDriver()
             .drive(onNext: { [weak self] selectedTicket in
-                self?.navigateToTicketDetails(with: selectedTicket)
+                self?.vm.selectedTicket.accept(selectedTicket)
+                self?.navigateToNewTicket(as: .ticketDetails)
             })
             .disposed(by: disposeBag)
 
@@ -101,6 +100,12 @@ class TicketsViewController: AppViewController {
             })
             .disposed(by: disposeBag)
     }
+
+    private func navigateToNewTicket(as mode: ViewMode) {
+        let newTicketVC = NewTicketViewController(with: self.vm, as: mode)
+        navigationController?.pushViewController(newTicketVC, animated: true)
+    }
+
     private func navigateToTicketDetails(with ticket: Ticket) {
         let detailsVC = TicketDetailsViewController()
         detailsVC.bind(to: TicketDetailsViewModel(model: ticket))

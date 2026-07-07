@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="YoT-Hp-qfS">
-                    <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                    <rect key="frame" x="0.0" y="118" width="393" height="684"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YPT-9F-Qb1">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
@@ -101,7 +101,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xCt-HI-ptk">
-                            <rect key="frame" x="0.0" y="220" width="393" height="514"/>
+                            <rect key="frame" x="0.0" y="220" width="393" height="464"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -128,8 +128,8 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.93333333333333335" green="0.96078431372549022" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="YoT-Hp-qfS" secondAttribute="bottom" id="2PI-Xo-Iel"/>
                 <constraint firstItem="YoT-Hp-qfS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="DuN-a5-8bp"/>
+                <constraint firstItem="YoT-Hp-qfS" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="1.02703" id="Zl8-fP-8YI"/>
                 <constraint firstItem="YoT-Hp-qfS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="n45-4q-Kxp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tAT-n5-spj" secondAttribute="trailing" constant="16" id="rdM-P3-NPx"/>
                 <constraint firstAttribute="trailing" secondItem="YoT-Hp-qfS" secondAttribute="trailing" id="v8p-La-gqs"/>
@@ -148,7 +148,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

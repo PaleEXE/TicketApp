@@ -13,7 +13,6 @@ class TicketDetailsViewController: AppViewController {
     }
     
     @IBOutlet weak var detailsCardStack: UIStackView!
-    @IBOutlet weak var documentsStack: UIStackView!
     @IBOutlet weak var descriptionTextView: UITextView!
 
     @IBOutlet weak var closeTicketButton: UIButton!
@@ -88,7 +87,7 @@ class TicketDetailsViewController: AppViewController {
             .disposed(by: disposeBag)
 
         self.vm.subType
-            .asDriver()
+            .asDriver(onErrorJustReturn: "")
             .drive(self.subTypeRow.valueLabel.rx.text)
             .disposed(by: disposeBag)
     

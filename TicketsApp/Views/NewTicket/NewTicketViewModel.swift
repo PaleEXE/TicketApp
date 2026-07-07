@@ -13,16 +13,20 @@ class NewTicketViewModel {
     let disposeBag = DisposeBag()
 
     let ticketTypes = BehaviorRelay(value: [
+        "Hardware Support",
+        "Software",
         "Network",
-        "skill",
-        "idk",
-        "sui"
+        "Access",
+        "Security"
     ])
     let selectedTicketType: BehaviorRelay<String?> = BehaviorRelay(value: nil)
 
     let ticketSubTypes = BehaviorRelay(value: [
-        "Fast",
-        "not"
+        "Equipment Malfunction",
+        "Permission Request",
+        "Software Installation Failure",
+        "Password Reset",
+        "Slow Connection / Outage"
     ])
     let selectedTicketSubType: BehaviorRelay<String?> = BehaviorRelay(value: nil)
 
