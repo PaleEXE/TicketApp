@@ -38,18 +38,10 @@ class NewTicketViewController: AppViewController {
 
         switch mode {
         case .newTicket:
-            newTicketView.isHidden = false
-            ticketDetailsView.isHidden = true
-            title = "New Ticket"
             setupUIAsNewTicket()
         case .ticketDetails:
-            newTicketView.isHidden = true
-            ticketDetailsView.isHidden = false
-            title = "Ticket Details"
             setupUIAsTicketDetails()
         }
-
-        setupSubmitButton()
     }
 
     private func setupGlobalStyles() {
@@ -79,6 +71,10 @@ class NewTicketViewController: AppViewController {
     }
 
     func setupUIAsTicketDetails() {
+        newTicketView.isHidden = true
+        ticketDetailsView.isHidden = false
+        title = "Ticket Details"
+
         detailsTableView.isScrollEnabled = false
         detailsTableView.rowHeight = UITableView.automaticDimension
         detailsTableView.estimatedRowHeight = 65
@@ -118,14 +114,20 @@ class NewTicketViewController: AppViewController {
             .drive(descriptionTextView.rx.text)
             .disposed(by: disposeBag)
 
+        setupSubmitButtonAsClose()
         setupAddCommentButton()
     }
 
     func setupUIAsNewTicket() {
+        newTicketView.isHidden = false
+        ticketDetailsView.isHidden = true
+        title = "New Ticket"
+
         setupPicker(textField: ticketTypeTextField, pickerView: ticketTypePicker, data: vm.ticketTypes, targetRelay: vm.selectedTicketType)
         setupPicker(textField: ticketSubTypeTextField, pickerView: ticketSubTypePicker, data: vm.ticketSubTypes, targetRelay: vm.selectedTicketSubType)
         setupPriorityCollectionView()
         setupBackgroundTap()
+        setupSubmitButtonAsSubmit()
     }
 
     private func setupPicker(textField: UITextField, pickerView: UIPickerView, data: BehaviorRelay<[String]>, targetRelay: BehaviorRelay<String?>) {
@@ -197,8 +199,8 @@ class NewTicketViewController: AppViewController {
             .disposed(by: disposeBag)
     }
 
-    func setupSubmitButton() {
-        let buttonTitle = mode == .ticketDetails ? "Close Ticket" : "Submit"
+    func setupSubmitButtonAsSubmit() {
+        let buttonTitle = "Submit"
 
         if var config = submitButton.configuration {
             config.title = buttonTitle
@@ -210,13 +212,27 @@ class NewTicketViewController: AppViewController {
         submitButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                switch self.mode {
-                case .newTicket:
-                    self.handleNewTicketSubmission()
-                case .ticketDetails:
-                    self.handleCloseTicketAction()
-                }
+                self.handleNewTicketSubmission()
             })
+            .disposed(by: disposeBag)
+    }
+
+    func setupSubmitButtonAsClose() {
+        let buttonTitle = "Close Ticket"
+
+        if var config = submitButton.configuration {
+            config.title = buttonTitle
+            submitButton.configuration = config
+        } else {
+            submitButton.setTitle(buttonTitle, for: .normal)
+        }
+
+        submitButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.handleCloseTicketAction()
+            }
+            )
             .disposed(by: disposeBag)
     }
 
@@ -229,7 +245,7 @@ class NewTicketViewController: AppViewController {
             .disposed(by: disposeBag)
     }
 
-    private func handleNewTicketSubmission() {
+    func handleNewTicketSubmission() {
         let type = vm.selectedTicketType.value
         let subType = vm.selectedTicketSubType.value
         let priority = vm.selectedPriority.value
@@ -271,7 +287,7 @@ class NewTicketViewController: AppViewController {
         showAlert(title: "Success", message: "New ticket was added")
     }
 
-    private func handleCloseTicketAction() {
+    func handleCloseTicketAction() {
         let ticket = self.ticketsVM.selectedTicket.value
         ticket?.details.status = .closed
         self.ticketsVM.selectedTicket.accept(ticket)
@@ -300,7 +316,7 @@ extension NewTicketViewController: UICollectionViewDelegateFlowLayout {
         let font = UIFont.systemFont(ofSize: 17)
         let textAttributes = [NSAttributedString.Key.font: font]
         let maxExpectedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: collectionView.bounds.height)
-
+        
         let textWidth = text.boundingRect(
             with: maxExpectedSize,
             options: [.usesLineFragmentOrigin],

@@ -9,6 +9,7 @@ class CommentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Comments"
 
         commentsTableView.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
         commentsTableView.rowHeight = UITableView.automaticDimension
