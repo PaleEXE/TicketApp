@@ -75,6 +75,24 @@ class NewTicketViewController: AppViewController {
         ticketDetailsView.isHidden = false
         title = "Ticket Details"
 
+        setupTicketDetailsTable()
+        setupSubmitButtonAsClose()
+        setupAddCommentButton()
+    }
+
+    func setupUIAsNewTicket() {
+        newTicketView.isHidden = false
+        ticketDetailsView.isHidden = true
+        title = "New Ticket"
+
+        setupPicker(textField: ticketTypeTextField, pickerView: ticketTypePicker, data: vm.ticketTypes, targetRelay: vm.selectedTicketType)
+        setupPicker(textField: ticketSubTypeTextField, pickerView: ticketSubTypePicker, data: vm.ticketSubTypes, targetRelay: vm.selectedTicketSubType)
+        setupPriorityCollectionView()
+        setupBackgroundTap()
+        setupSubmitButtonAsSubmit()
+    }
+
+    private func setupTicketDetailsTable() {
         detailsTableView.isScrollEnabled = false
         detailsTableView.rowHeight = UITableView.automaticDimension
         detailsTableView.estimatedRowHeight = 65
@@ -114,20 +132,6 @@ class NewTicketViewController: AppViewController {
             .drive(descriptionTextView.rx.text)
             .disposed(by: disposeBag)
 
-        setupSubmitButtonAsClose()
-        setupAddCommentButton()
-    }
-
-    func setupUIAsNewTicket() {
-        newTicketView.isHidden = false
-        ticketDetailsView.isHidden = true
-        title = "New Ticket"
-
-        setupPicker(textField: ticketTypeTextField, pickerView: ticketTypePicker, data: vm.ticketTypes, targetRelay: vm.selectedTicketType)
-        setupPicker(textField: ticketSubTypeTextField, pickerView: ticketSubTypePicker, data: vm.ticketSubTypes, targetRelay: vm.selectedTicketSubType)
-        setupPriorityCollectionView()
-        setupBackgroundTap()
-        setupSubmitButtonAsSubmit()
     }
 
     private func setupPicker(textField: UITextField, pickerView: UIPickerView, data: BehaviorRelay<[String]>, targetRelay: BehaviorRelay<String?>) {
