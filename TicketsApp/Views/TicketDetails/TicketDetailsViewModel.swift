@@ -19,12 +19,12 @@ class TicketDetailsViewModel {
     let status: BehaviorRelay<TicketStatus>
 
     init(model: Ticket) {
-        self.id = BehaviorRelay(value: model.id)
-        self.type = BehaviorRelay(value: model.type)
-        self.subType = BehaviorRelay(value: model.subType)
-        self.date = BehaviorRelay(value: model.date)
+        self.id = BehaviorRelay(value: model.details.id)
+        self.type = BehaviorRelay(value: model.details.type)
+        self.subType = BehaviorRelay(value: model.details.subType)
+        self.date = BehaviorRelay(value: model.details.date)
         self.description = BehaviorRelay(value: model.description)
-        self.priority = BehaviorRelay(value: model.priority)
-        self.status = BehaviorRelay(value: model.status)
+        self.priority = BehaviorRelay(value: model.details.priorityLevel)
+        self.status = BehaviorRelay(value: model.details.status)
     }
 }

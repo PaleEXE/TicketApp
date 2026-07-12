@@ -11,6 +11,8 @@ class NewTicketViewController: AppViewController {
     @IBOutlet weak var detailsTableView: UITableView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var buttonsStack: UIStackView!
+    @IBOutlet weak var addCommentButton: UIButton!
 
     private let ticketTypePicker = UIPickerView()
     private let ticketSubTypePicker = UIPickerView()
@@ -89,32 +91,7 @@ class NewTicketViewController: AppViewController {
             forCellReuseIdentifier: "TicketDetailsTableViewCell"
         )
 
-        let valuesObservable = ticketsVM.selectedTicket
-            .compactMap { $0 }
-            .map { ticket -> [TicketDetailsTableViewCellModel] in
-                var models = Mirror(reflecting: ticket).children
-                    .filter { $0.label != "description" }
-                    .compactMap { child in
-                        let label = child.label ?? "ERR"
-                        let val: DetailsValue = {
-                            if let status = child.value as? TicketStatus {
-                                return .status(status)
-                            } else {
-                                return .normal("\(child.value)")
-                            }
-                        }()
-                        return TicketDetailsTableViewCellModel(title: label.fromCamelToTitle(), value: val)
-                    }
-
-                if let idx = models.firstIndex(where: {
-                    if case .status = $0.value.value { return true }
-                    return false
-                }) {
-                    models.swapAt(0, idx)
-                }
-
-                return models
-            }
+        let valuesObservable = ticketsVM.getObservableValues()
 
         valuesObservable
             .bind(to: detailsTableView.rx.items(
@@ -140,6 +117,8 @@ class NewTicketViewController: AppViewController {
             .asDriver(onErrorJustReturn: "ERR")
             .drive(descriptionTextView.rx.text)
             .disposed(by: disposeBag)
+
+        setupAddCommentButton()
     }
 
     func setupUIAsNewTicket() {
@@ -241,6 +220,15 @@ class NewTicketViewController: AppViewController {
             .disposed(by: disposeBag)
     }
 
+    func setupAddCommentButton() {
+        addCommentButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self else { return }
+                self.navigationController?.pushViewController(CommentsViewController(), animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+
     private func handleNewTicketSubmission() {
         let type = vm.selectedTicketType.value
         let subType = vm.selectedTicketSubType.value
@@ -272,7 +260,7 @@ class NewTicketViewController: AppViewController {
             subType: subType!,
             date: currentDateString,
             description: description,
-            priority: priority!.priority,
+            priorityLevel: priority!.priority,
             status: .progress
         )
 
@@ -284,8 +272,8 @@ class NewTicketViewController: AppViewController {
     }
 
     private func handleCloseTicketAction() {
-        var ticket = self.ticketsVM.selectedTicket.value
-        ticket?.status = .closed
+        let ticket = self.ticketsVM.selectedTicket.value
+        ticket?.details.status = .closed
         self.ticketsVM.selectedTicket.accept(ticket)
         navigationController?.popViewController(animated: true)
     }

@@ -7,21 +7,11 @@
 
 
 struct Ticket {
-    let id: String
-    let type: String
-    let subType: String
-    let date: String
+    var details: TicketDetails
     let description: String
-    let priority: TicketPriority
-    var status: TicketStatus
 
-    init(id: String, type: String, subType: String = "sui", date: String, description: String = "idk", priority: TicketPriority, status: TicketStatus) {
-        self.id = id
-        self.type = type
-        self.subType = subType
-        self.date = date
+    init(id: String, type: String, subType: String = "sui", date: String, description: String = "idk", priorityLevel: TicketPriority, status: TicketStatus) {
+        self.details = TicketDetails(id: id,status: status, type: type, subType: subType, date: date, priorityLevel: priorityLevel)
         self.description = description
-        self.priority = priority
-        self.status = status
     }
 }

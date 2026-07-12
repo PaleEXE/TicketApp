@@ -67,4 +67,8 @@ class FilterViewModel {
             })
             .disposed(by: disposeBag)
     }
+
+    func clearFilters() {
+        self.selectedOptions.accept([])
+    }
 }

@@ -39,24 +39,24 @@ final class TicketTableViewCell: UITableViewCell {
     func configure(ticketDriver: Driver<Ticket>) {
 
         ticketDriver
-            .map { $0.id }
+            .map { $0.details.id }
             .drive(ticketIdLabel.rx.text)
             .disposed(by: disposeBag)
 
         ticketDriver
-            .map { $0.type }
+            .map { $0.details.type }
             .drive(onNext: { [weak self] title in
                 self?.issueLabel?.text = title
             })
             .disposed(by: disposeBag)
 
         ticketDriver
-            .map { $0.date }
+            .map { $0.details.date }
             .drive(dateLabel.rx.text)
             .disposed(by: disposeBag)
 
         ticketDriver
-            .map { $0.status }
+            .map { $0.details.status }
             .drive(onNext: { [weak self] status in
                 self?.statusTagView.configure(with: status)
             })

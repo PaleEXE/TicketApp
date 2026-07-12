@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjn-iU-Itc" customClass="CheckPillView" customModule="TicketsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="126" height="25"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="C0J-z8-sg4">
+                    <rect key="frame" x="10" y="4" width="106" height="17"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i2J-ET-Qrg">
+                            <rect key="frame" x="0.0" y="2.9999999999999982" width="16" height="12.000000000000004"/>
+                            <color key="tintColor" systemColor="systemGreenColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Ya7-Rh-vKy"/>
+                                <constraint firstAttribute="height" constant="16" id="tbl-vL-uvK"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check-in: HH:MM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91c-rg-XQE">
+                            <rect key="frame" x="20" y="1.333333333333333" width="86" height="14.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                            <color key="textColor" systemColor="systemGreenColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="KW9-qG-p7o"/>
+            <color key="backgroundColor" red="0.84999999999999998" green="0.95999999999999996" blue="0.87" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="C0J-z8-sg4" firstAttribute="top" secondItem="yjn-iU-Itc" secondAttribute="top" constant="4" id="ASi-Hx-lJr"/>
+                <constraint firstAttribute="trailing" secondItem="C0J-z8-sg4" secondAttribute="trailing" constant="10" id="axh-r0-ud9"/>
+                <constraint firstItem="C0J-z8-sg4" firstAttribute="leading" secondItem="yjn-iU-Itc" secondAttribute="leading" constant="10" id="nZx-MF-mbF"/>
+                <constraint firstAttribute="bottom" secondItem="C0J-z8-sg4" secondAttribute="bottom" constant="4" id="qvB-uN-s57"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" systemColor="systemGreenColor"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="checkMarkImageView" destination="i2J-ET-Qrg" id="8cG-4i-fhM"/>
+                <outlet property="titleLabel" destination="91c-rg-XQE" id="otj-a6-SPA"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

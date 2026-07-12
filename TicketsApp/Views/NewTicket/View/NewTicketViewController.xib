@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTicketViewController" customModule="TicketsApp" customModuleProvider="target">
             <connections>
+                <outlet property="addCommentButton" destination="h5l-6p-Iox" id="FsU-Tf-aZe"/>
+                <outlet property="buttonsStack" destination="ytz-tv-GTU" id="nfH-no-Vsn"/>
                 <outlet property="descriptionTextView" destination="aQk-fr-mD5" id="Xdu-eo-gFX"/>
                 <outlet property="detailsTableView" destination="Hwr-3b-lBf" id="kTp-7V-Dmb"/>
                 <outlet property="newTicketView" destination="VGl-Kn-Ki9" id="J7c-Aq-LVO"/>
@@ -28,10 +30,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KhB-Lx-130">
-                    <rect key="frame" x="0.0" y="118" width="393" height="933"/>
+                    <rect key="frame" x="0.0" y="117.99999999999994" width="393" height="936.66666666666652"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGl-Kn-Ki9" userLabel="New Ticket View">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="408.33333333333331"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="412"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UvU-Yh-DPD">
                                     <rect key="frame" x="16" y="16" width="361" height="324.33333333333331"/>
@@ -138,7 +140,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HxQ-eE-rsV" userLabel="Ticket Details View">
-                            <rect key="frame" x="0.0" y="408.33333333333343" width="393" height="524.66666666666652"/>
+                            <rect key="frame" x="0.0" y="411.99999999999994" width="393" height="524.66666666666652"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iVP-V2-cvX">
                                     <rect key="frame" x="16" y="16" width="361" height="492.66666666666674"/>
@@ -184,24 +186,34 @@
                         </view>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-8I-qpu">
-                    <rect key="frame" x="16" y="1137" width="361" height="42"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="42" id="submit-btn-height"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Submit"/>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ytz-tv-GTU" userLabel="Buttons Stack">
+                    <rect key="frame" x="16" y="1140.6666666666667" width="361" height="88.333333333333258"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-8I-qpu">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="submit-btn-height"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5l-6p-Iox" userLabel="Add Comment">
+                            <rect key="frame" x="0.0" y="50" width="361" height="38.333333333333343"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Add Comment"/>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="ytz-tv-GTU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="3iQ-w1-c5e"/>
                 <constraint firstItem="KhB-Lx-130" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="46q-6R-Jfr"/>
-                <constraint firstItem="A5q-8I-qpu" firstAttribute="top" secondItem="KhB-Lx-130" secondAttribute="bottom" constant="86" id="64n-rL-Atk"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="A5q-8I-qpu" secondAttribute="bottom" constant="24" id="Hnt-hj-AHx"/>
                 <constraint firstItem="KhB-Lx-130" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Uam-na-uBB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="A5q-8I-qpu" secondAttribute="trailing" constant="16" id="Wy2-lV-4Qs"/>
-                <constraint firstItem="A5q-8I-qpu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="emr-MW-DPe"/>
+                <constraint firstItem="ytz-tv-GTU" firstAttribute="top" secondItem="KhB-Lx-130" secondAttribute="bottom" constant="86" id="V1u-s6-8L9"/>
+                <constraint firstAttribute="bottom" secondItem="ytz-tv-GTU" secondAttribute="bottom" constant="42" id="fQf-hR-pso"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ytz-tv-GTU" secondAttribute="trailing" constant="16" id="kTj-Kd-MKd"/>
                 <constraint firstItem="KhB-Lx-130" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lc0-Tg-ogD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

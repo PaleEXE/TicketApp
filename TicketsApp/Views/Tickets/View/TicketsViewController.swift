@@ -115,10 +115,12 @@ class TicketsViewController: AppViewController {
     private func presentFilterSheet() {
         let filterVC = FilterViewController(alreadySelected: vm.selectedFilterOptions.value)
 
+        filterVC.modalPresentationStyle = .pageSheet
+
         if let sheet = filterVC.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.prefersGrabberVisible = true
-            sheet.preferredCornerRadius = 24
+            sheet.preferredCornerRadius = 16
         }
 
         present(filterVC, animated: true)
@@ -140,8 +142,8 @@ class TicketsViewController: AppViewController {
         layout.invalidateLayout()
 
         selectedFiltersCollectionView.rx
-                .setDelegate(self)
-                .disposed(by: disposeBag)
+            .setDelegate(self)
+            .disposed(by: disposeBag)
 
         vm.selectedFilterOptions
             .asDriver()
@@ -197,7 +199,7 @@ class TicketsViewController: AppViewController {
 
             }
             .disposed(by: disposeBag)
-        }
+    }
 
     private func configureTicketsTotalStatusCollectionViewLayout() {
         guard let layout = ticketsTotalStatus.collectionViewLayout as? UICollectionViewFlowLayout else { return }

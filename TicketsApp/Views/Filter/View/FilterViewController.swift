@@ -5,6 +5,7 @@ import RxCocoa
 class FilterViewController: UIViewController {
     @IBOutlet weak var filterOptionsCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var clearFiltersButton: UIButton!
 
     let applyTappedSubject = PublishSubject<[FilterOption]>()
 
@@ -28,6 +29,18 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         bindApplyButton()
         bindFilterOptionsCollectionView()
+        bindClearFiltersButton()
+    }
+
+    func bindClearFiltersButton() {
+        clearFiltersButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self else { return }
+                self.vm.clearFilters()
+                self.applyTappedSubject.onNext(self.vm.selectedOptions.value)
+                self.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     func bindApplyButton() {

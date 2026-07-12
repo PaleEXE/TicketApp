@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterViewController" customModule="TicketsApp" customModuleProvider="target">
             <connections>
                 <outlet property="applyButton" destination="Uvj-ex-mli" id="Q9n-bl-88k"/>
+                <outlet property="clearFiltersButton" destination="Uca-ax-nmC" id="6bb-w0-1cr"/>
                 <outlet property="filterOptionsCollectionView" destination="05x-2d-iuu" id="PMK-1I-drU"/>
                 <outlet property="view" destination="Ozi-nc-Pcb" id="D02-lY-Ht8"/>
             </connections>
@@ -25,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="1Co-hq-SvO" userLabel="Master Vertical Stack View">
-                            <rect key="frame" x="16" y="21" width="361" height="209"/>
+                            <rect key="frame" x="16" y="21" width="361" height="268.33333333333331"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-t5-CxM">
                                     <rect key="frame" x="0.0" y="0.0" width="361" height="58.666666666666664"/>
@@ -76,6 +77,12 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Apply"/>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uca-ax-nmC">
+                                    <rect key="frame" x="0.0" y="230" width="361" height="38.333333333333314"/>
+                                    <color key="tintColor" name="AccentColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Clear Filters"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" name="bgColor"/>
                         </stackView>
@@ -101,6 +108,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="bgColor">
             <color red="0.93300002813339233" green="0.96100002527236938" blue="0.98100000619888306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
