@@ -9,6 +9,12 @@ import UIKit
 
 
 @IBDesignable class RoundedView: UIView {
+    @IBInspectable var isMasksToBounds: Bool = true {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
     @IBInspectable var isRounded: Bool = true {
         didSet {
             setNeedsLayout()
@@ -33,8 +39,8 @@ import UIKit
         if isRounded {
             layer.cornerRadius = bounds.height / 2
             layer.cornerCurve = .continuous
-            layer.masksToBounds = true
-            clipsToBounds = true
+            layer.masksToBounds = isMasksToBounds
+            clipsToBounds = isMasksToBounds
         }
     }
 }

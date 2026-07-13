@@ -107,7 +107,7 @@
                                                 <rect key="frame" x="12" y="10" width="166.66666666666666" height="38"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-Uj-g4M">
-                                                        <rect key="frame" x="0.0" y="0.66666666666666785" width="38" height="36.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="0.66666666666666785" width="38" height="36.666666666666657"/>
                                                         <color key="tintColor" red="0.14509803921568629" green="0.38823529411764707" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="38" id="Swy-xf-g0l"/>
@@ -233,6 +233,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="checkInPill" destination="uNL-qz-BPV" id="gji-gC-YUN"/>
+                <outlet property="checkOutButton" destination="2qV-Ht-ohC" id="Oio-Tf-ByH"/>
                 <outlet property="checkOutPill" destination="5jj-l1-YZl" id="Rc0-x2-ARh"/>
                 <outlet property="pillsStackView" destination="VE1-tm-jId" id="DB8-pZ-XGW"/>
                 <outlet property="statusPill" destination="Gbq-lG-3JO" id="evH-6b-g6c"/>

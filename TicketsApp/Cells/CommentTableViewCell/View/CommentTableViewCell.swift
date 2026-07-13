@@ -5,6 +5,7 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var checkInPill: CheckPillView!
     @IBOutlet weak var checkOutPill: CheckPillView!
     @IBOutlet weak var statusPill: CheckPillView!
+    @IBOutlet weak var checkOutButton: RoundedButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
