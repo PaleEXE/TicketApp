@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HierarchyViewController" customModule="TicketsApp" customModuleProvider="target">
             <connections>
+                <outlet property="profileDetailsButton" destination="Kdv-Ne-W4I" id="Dzk-A1-SEV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1YH-zM-Vh5"/>
             </connections>
         </placeholder>
@@ -40,7 +41,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3k-BT-hmJ">
                                                                     <rect key="frame" x="12.333333333333334" y="14.999999999999998" width="25.333333333333329" height="20.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" name="textColor"/>
+                                                                    <color key="textColor" name="accentTeal"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-jw-FNX" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
@@ -48,14 +49,14 @@
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XOz-aV-hGf">
                                                                             <rect key="frame" x="2" y="3.9999999999999991" width="14" height="11"/>
-                                                                            <color key="tintColor" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="tintColor" name="accentTeal"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="14" id="6Hg-tG-ud1"/>
                                                                                 <constraint firstAttribute="height" constant="14" id="quu-AQ-dtL"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="0.96660917999999996" green="0.9910026193" blue="0.99149757620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <color key="backgroundColor" name="subtleTeal"/>
                                                                     <constraints>
                                                                         <constraint firstItem="XOz-aV-hGf" firstAttribute="centerY" secondItem="gXs-jw-FNX" secondAttribute="centerY" id="2XK-8n-dZU"/>
                                                                         <constraint firstAttribute="height" constant="18" id="4Pc-zI-Ncl"/>
@@ -68,12 +69,12 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="value" name="accentTeal"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.96614629029999999" green="0.99242848159999997" blue="0.99244266749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="backgroundColor" name="subtleTeal"/>
                                                             <constraints>
                                                                 <constraint firstItem="L3k-BT-hmJ" firstAttribute="centerY" secondItem="8uh-WE-P3P" secondAttribute="centerY" id="AJ0-HO-HtD"/>
                                                                 <constraint firstAttribute="width" constant="50" id="BlG-Mj-Ona"/>
@@ -97,20 +98,20 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Real Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-SM-rfP">
                                                                             <rect key="frame" x="0.0" y="0.0" width="187" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                            <color key="textColor" red="0.035294117649999998" green="0.094117647060000004" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="textColor" name="primaryText"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izs-ER-XWb" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
                                                                             <rect key="frame" x="195" y="0.0" width="32" height="24"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT0-87-4M5">
-                                                                                    <rect key="frame" x="7" y="5.0000000000000009" width="18.333333333333329" height="14.333333333333336"/>
+                                                                                    <rect key="frame" x="6.9999999999999982" y="5.0000000000000009" width="18.333333333333329" height="14.333333333333336"/>
                                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                                                    <color key="textColor" red="0.14117647059999999" green="0.51764705879999995" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="textColor" name="brandBlue"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" red="0.9548305869" green="0.97708028550000003" blue="0.98866349460000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="backgroundColor" name="cardBackground"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="OT0-87-4M5" firstAttribute="centerX" secondItem="izs-ER-XWb" secondAttribute="centerX" id="2AM-3n-RAT"/>
                                                                                 <constraint firstAttribute="width" constant="32" id="G57-am-Nsy"/>
@@ -122,7 +123,7 @@
                                                                                     <real key="value" value="1"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                    <color key="value" red="0.9548305869" green="0.97708028550000003" blue="0.98866349460000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="value" name="cardBackground"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
@@ -134,12 +135,12 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9x-Uh-AfX">
                                                                             <rect key="frame" x="0.0" y="2" width="67" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="textColor" name="secondaryText"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-Cf-UQs">
                                                                             <rect key="frame" x="73" y="2" width="2" height="12"/>
-                                                                            <color key="backgroundColor" red="0.81960784310000001" green="0.84705882349999995" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="backgroundColor" name="separator"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="12" id="0Rf-kT-93z"/>
                                                                                 <constraint firstAttribute="width" constant="2" id="ZuX-Rh-gDK"/>
@@ -148,7 +149,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIUUU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-cc-2eb">
                                                                             <rect key="frame" x="81" y="2" width="37.666666666666657" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="textColor" name="secondaryText"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0O-vR-RXx">
@@ -167,14 +168,14 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.text.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-Mf-3vN">
                                                             <rect key="frame" x="4" y="5.6666666666666625" width="24" height="21"/>
-                                                            <color key="tintColor" red="0.14117647059999999" green="0.51764705879999995" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" name="brandBlue"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="byp-iT-tUB"/>
                                                                 <constraint firstAttribute="width" secondItem="Wd0-Mf-3vN" secondAttribute="height" multiplier="1:1" id="gnR-e0-QsR"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.9548305869" green="0.97708028550000003" blue="0.98866349460000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" name="cardBackground"/>
                                                     <constraints>
                                                         <constraint firstItem="Wd0-Mf-3vN" firstAttribute="centerX" secondItem="Kdv-Ne-W4I" secondAttribute="centerX" id="754-Ba-cHc"/>
                                                         <constraint firstAttribute="width" constant="32" id="9y4-5l-9kL"/>
@@ -187,7 +188,7 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.92792385820000001" green="0.96563702819999997" blue="0.98109894990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="value" name="cardBackground"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -211,7 +212,7 @@
                                             <real key="value" value="1"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="value" name="accentTeal"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
@@ -220,7 +221,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrI-u0-aOb">
                                             <rect key="frame" x="179.66666666666666" y="0.0" width="2" height="24"/>
-                                            <color key="backgroundColor" red="0.88235294119999996" green="0.91372549020000005" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" name="separator"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="2" id="YgE-ng-a2h"/>
                                             </constraints>
@@ -254,7 +255,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYp-M5-a4H">
                                                                                     <rect key="frame" x="15.333333333333337" y="14.999999999999998" width="19.666666666666671" height="20.333333333333329"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <color key="textColor" red="0.44595474000000002" green="0.82774859670000001" blue="0.843544662" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="textColor" name="accentTeal"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="a37-vb-t4o" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
@@ -262,14 +263,14 @@
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6ee-57-jpQ">
                                                                                             <rect key="frame" x="2" y="3.9999999999999991" width="14" height="11"/>
-                                                                                            <color key="tintColor" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="tintColor" name="accentTeal"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="14" id="0wp-r8-GVR"/>
                                                                                                 <constraint firstAttribute="width" constant="14" id="hNf-Dn-9MJ"/>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                     </subviews>
-                                                                                    <color key="backgroundColor" red="0.96660917999999996" green="0.9910026193" blue="0.99149757620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="backgroundColor" name="subtleTeal"/>
                                                                                     <constraints>
                                                                                         <constraint firstItem="6ee-57-jpQ" firstAttribute="centerY" secondItem="a37-vb-t4o" secondAttribute="centerY" id="VoP-kc-cjj"/>
                                                                                         <constraint firstAttribute="height" constant="18" id="cSI-Xc-KFQ"/>
@@ -282,12 +283,12 @@
                                                                                             <real key="value" value="1"/>
                                                                                         </userDefinedRuntimeAttribute>
                                                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                            <color key="value" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="value" name="accentTeal"/>
                                                                                         </userDefinedRuntimeAttribute>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </view>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" red="0.96614629029999999" green="0.99242848159999997" blue="0.99244266749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="backgroundColor" name="subtleTeal"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="bottom" secondItem="a37-vb-t4o" secondAttribute="bottom" id="3Ab-Md-FbY"/>
                                                                                 <constraint firstAttribute="width" constant="50" id="94u-wu-8cO"/>
@@ -307,7 +308,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Team Leader Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2W1-IB-Zqt">
                                                                                     <rect key="frame" x="0.0" y="2" width="227" height="19.333333333333332"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                                    <color key="textColor" red="0.035294117649999998" green="0.094117647060000004" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="textColor" name="primaryText"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="YM5-rf-O0v">
@@ -316,12 +317,12 @@
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFr-zX-yHC">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="12"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                            <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="textColor" name="secondaryText"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e6-M0-cRr">
                                                                                             <rect key="frame" x="78.666666666666657" y="0.0" width="2" height="12"/>
-                                                                                            <color key="backgroundColor" red="0.81960784310000001" green="0.84705882349999995" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="backgroundColor" name="separator"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="2" id="3fO-i4-c6H"/>
                                                                                                 <constraint firstAttribute="height" constant="12" id="blf-vB-Cxg"/>
@@ -330,7 +331,7 @@
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modern Trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CP6-9q-h1R">
                                                                                             <rect key="frame" x="86.666666666666657" y="0.0" width="79.333333333333343" height="12"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                            <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="textColor" name="secondaryText"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-e9-eCy">
@@ -349,14 +350,14 @@
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.text.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="arU-8a-0d8">
                                                                             <rect key="frame" x="4" y="5.6666666666666625" width="24" height="21"/>
-                                                                            <color key="tintColor" red="0.14117647059999999" green="0.51764705879999995" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="tintColor" name="brandBlue"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="arU-8a-0d8" secondAttribute="height" multiplier="1:1" id="Q1R-Bv-Ndy"/>
                                                                                 <constraint firstAttribute="width" constant="24" id="cnX-Ci-4nA"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="0.9548305869" green="0.97708028550000003" blue="0.98866349460000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <color key="backgroundColor" name="cardBackground"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="Id7-oV-E8s" secondAttribute="height" multiplier="1:1" id="31U-4b-2qo" userLabel="aspect = 1:1"/>
                                                                         <constraint firstItem="arU-8a-0d8" firstAttribute="centerY" secondItem="Id7-oV-E8s" secondAttribute="centerY" id="8Vq-F2-RsW"/>
@@ -368,7 +369,7 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" red="0.9548305869" green="0.97708028550000003" blue="0.98866349460000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="value" name="cardBackground"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
@@ -399,7 +400,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCg-Lg-2R7">
                                                                                     <rect key="frame" x="12.333333333333337" y="14.999999999999998" width="25.666666666666671" height="20.333333333333329"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <color key="textColor" red="0.44595474000000002" green="0.82774859670000001" blue="0.843544662" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="textColor" name="accentTeal"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                     <userDefinedRuntimeAttributes>
                                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
@@ -410,14 +411,14 @@
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="n1a-io-lk8">
                                                                                             <rect key="frame" x="2" y="3.9999999999999991" width="14" height="11"/>
-                                                                                            <color key="tintColor" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="tintColor" name="accentTeal"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="14" id="DNW-5a-U2V"/>
                                                                                                 <constraint firstAttribute="height" constant="14" id="DQM-22-rYX"/>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                     </subviews>
-                                                                                    <color key="backgroundColor" red="0.96660917999999996" green="0.9910026193" blue="0.99149757620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="backgroundColor" name="subtleTeal"/>
                                                                                     <constraints>
                                                                                         <constraint firstItem="n1a-io-lk8" firstAttribute="centerX" secondItem="gbp-zl-asf" secondAttribute="centerX" id="N6b-Lk-Ct7"/>
                                                                                         <constraint firstItem="n1a-io-lk8" firstAttribute="centerY" secondItem="gbp-zl-asf" secondAttribute="centerY" id="TiP-NL-lPh"/>
@@ -430,12 +431,12 @@
                                                                                             <real key="value" value="1"/>
                                                                                         </userDefinedRuntimeAttribute>
                                                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                            <color key="value" red="0.44572263960000003" green="0.82772964240000002" blue="0.84450298550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="value" name="accentTeal"/>
                                                                                         </userDefinedRuntimeAttribute>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </view>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" red="0.96614629029999999" green="0.99242848159999997" blue="0.99244266749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="backgroundColor" name="subtleTeal"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="yCg-Lg-2R7" firstAttribute="centerY" secondItem="b6e-ru-a7u" secondAttribute="centerY" id="AJG-7E-l4p"/>
                                                                                 <constraint firstAttribute="width" secondItem="b6e-ru-a7u" secondAttribute="height" multiplier="1:1" id="PqS-NR-Llr"/>
@@ -455,7 +456,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Account Manager Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43Q-nr-IgG">
                                                                                     <rect key="frame" x="0.0" y="2" width="227" height="19.333333333333332"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                                    <color key="textColor" red="0.035294117649999998" green="0.094117647060000004" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="textColor" name="primaryText"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-8h-uq5">
@@ -464,12 +465,12 @@
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H52-Hw-tyP">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="12"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                            <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="textColor" name="secondaryText"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ww-EV-BF5">
                                                                                             <rect key="frame" x="105.66666666666666" y="0.0" width="2" height="12"/>
-                                                                                            <color key="backgroundColor" red="0.81960784310000001" green="0.84705882349999995" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="backgroundColor" name="separator"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="12" id="lDE-Pv-COv"/>
                                                                                                 <constraint firstAttribute="width" constant="2" id="xfz-eR-rH7"/>
@@ -478,7 +479,7 @@
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modern Trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2K8-3Y-cWL">
                                                                                             <rect key="frame" x="113.66666666666666" y="0.0" width="79.333333333333343" height="12"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                            <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                            <color key="textColor" name="secondaryText"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j88-iJ-0YC">
@@ -497,7 +498,7 @@
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.text.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="git-hW-tGT">
                                                                             <rect key="frame" x="4" y="5.6666666666666625" width="24" height="21"/>
-                                                                            <color key="tintColor" red="0.14117647059999999" green="0.51764705879999995" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="tintColor" name="brandBlue"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="24" id="IjX-Za-dwW"/>
                                                                                 <constraint firstAttribute="width" secondItem="git-hW-tGT" secondAttribute="height" multiplier="1:1" id="JNX-Jm-nHf"/>
@@ -516,7 +517,7 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" red="0.92792385820000001" green="0.96563702819999997" blue="0.98109894990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="value" name="cardBackground"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
@@ -535,7 +536,7 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.90196078431372551" green="0.92549019607843142" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" name="separator"/>
                                     <constraints>
                                         <constraint firstItem="J4M-YG-sgK" firstAttribute="top" secondItem="ScV-fK-anR" secondAttribute="top" id="PFz-Ch-Pua"/>
                                         <constraint firstAttribute="bottom" secondItem="J4M-YG-sgK" secondAttribute="bottom" id="UiE-mf-cWL"/>
@@ -571,22 +572,33 @@
             </constraints>
             <point key="canvasLocation" x="-77.099236641221367" y="100"/>
         </view>
-        <view contentMode="scaleToFill" id="xBm-lE-YNM">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <viewLayoutGuide key="safeArea" id="61z-0f-k5g"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-685" y="749"/>
-        </view>
     </objects>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="person.text.rectangle" catalog="system" width="128" height="93"/>
+        <namedColor name="accentTeal">
+            <color red="0.44705882352941179" green="0.82745098039215681" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="bgColor">
             <color red="0.93300002813339233" green="0.96100002527236938" blue="0.98100000619888306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="textColor">
-            <color red="0.43137254901960786" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="brandBlue">
+            <color red="0.14117647058823529" green="0.51764705882352946" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cardBackground">
+            <color red="0.95294117647058818" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="0.035294117647058823" green="0.094117647058823528" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryText">
+            <color red="0.45882352941176469" green="0.52941176470588236" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="separator">
+            <color red="0.81960784313725488" green="0.84705882352941175" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subtleTeal">
+            <color red="0.96470588235294119" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
