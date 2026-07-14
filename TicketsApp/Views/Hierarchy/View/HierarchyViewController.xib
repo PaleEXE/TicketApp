@@ -40,7 +40,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3k-BT-hmJ">
                                                                     <rect key="frame" x="12.333333333333334" y="14.999999999999998" width="25.333333333333329" height="20.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.44595474000000002" green="0.82774859670000001" blue="0.843544662" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <color key="textColor" name="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-jw-FNX" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
@@ -95,16 +95,16 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="227" height="24"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Real Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-SM-rfP">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="24"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                             <color key="textColor" red="0.035294117649999998" green="0.094117647060000004" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izs-ER-XWb" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
-                                                                            <rect key="frame" x="97.666666666666657" y="0.0" width="32" height="24"/>
+                                                                            <rect key="frame" x="195" y="0.0" width="32" height="24"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT0-87-4M5">
-                                                                                    <rect key="frame" x="6.9999999999999982" y="5.0000000000000009" width="18.333333333333329" height="14.333333333333336"/>
+                                                                                    <rect key="frame" x="7" y="5.0000000000000009" width="18.333333333333329" height="14.333333333333336"/>
                                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                                     <color key="textColor" red="0.14117647059999999" green="0.51764705879999995" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -125,10 +125,6 @@
                                                                                     <color key="value" red="0.9548305869" green="0.97708028550000003" blue="0.98866349460000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
-                                                                        </view>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdN-j1-oDZ">
-                                                                            <rect key="frame" x="137.66666666666666" y="0.0" width="89.333333333333343" height="24"/>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         </view>
                                                                     </subviews>
                                                                 </stackView>
@@ -472,21 +468,21 @@
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ww-EV-BF5">
-                                                                                            <rect key="frame" x="105.66666666666666" y="0.0" width="1" height="12"/>
+                                                                                            <rect key="frame" x="105.66666666666666" y="0.0" width="2" height="12"/>
                                                                                             <color key="backgroundColor" red="0.81960784310000001" green="0.84705882349999995" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="12" id="lDE-Pv-COv"/>
-                                                                                                <constraint firstAttribute="width" constant="1" id="xfz-eR-rH7"/>
+                                                                                                <constraint firstAttribute="width" constant="2" id="xfz-eR-rH7"/>
                                                                                             </constraints>
                                                                                         </view>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modern Trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2K8-3Y-cWL">
-                                                                                            <rect key="frame" x="112.66666666666666" y="0.0" width="79.333333333333343" height="12"/>
+                                                                                            <rect key="frame" x="113.66666666666666" y="0.0" width="79.333333333333343" height="12"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                             <color key="textColor" red="0.45882352939999999" green="0.52941176469999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j88-iJ-0YC">
-                                                                                            <rect key="frame" x="198" y="0.0" width="29" height="12"/>
+                                                                                            <rect key="frame" x="199" y="0.0" width="28" height="12"/>
                                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                         </view>
                                                                                     </subviews>
@@ -588,6 +584,9 @@
         <image name="person.text.rectangle" catalog="system" width="128" height="93"/>
         <namedColor name="bgColor">
             <color red="0.93300002813339233" green="0.96100002527236938" blue="0.98100000619888306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.43137254901960786" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
