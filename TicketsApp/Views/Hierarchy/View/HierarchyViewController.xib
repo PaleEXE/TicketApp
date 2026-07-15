@@ -218,6 +218,7 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                             <color key="value" name="accentTeal"/>
                                         </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRounded" value="NO"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-Ay-y64">
@@ -238,7 +239,7 @@
                                         <constraint firstItem="SrI-u0-aOb" firstAttribute="top" secondItem="NB9-Ay-y64" secondAttribute="top" id="TKP-7B-Bu8"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScV-fK-anR">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScV-fK-anR" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
                                     <rect key="frame" x="16" y="116" width="361" height="169"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="J4M-YG-sgK">
@@ -548,10 +549,7 @@
                                         <constraint firstAttribute="trailing" secondItem="J4M-YG-sgK" secondAttribute="trailing" id="pNw-BY-lf4"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="16"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRounded" value="NO"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>

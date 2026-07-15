@@ -22,7 +22,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyg-aZ-eWc">
                     <rect key="frame" x="0.0" y="124" width="402" height="682"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yq9-kK-uc2">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yq9-kK-uc2" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
                             <rect key="frame" x="12" y="46" width="378" height="482"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YS3-fR-WvL">
@@ -458,10 +458,7 @@
                                 <constraint firstItem="YS3-fR-WvL" firstAttribute="leading" secondItem="Yq9-kK-uc2" secondAttribute="leading" id="vJw-WV-93e"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="16"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRounded" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4MA-dI-Zgq" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">

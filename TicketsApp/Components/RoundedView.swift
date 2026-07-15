@@ -15,7 +15,13 @@ import UIKit
         }
     }
 
-    @IBInspectable var isRounded: Bool = true {
+    @IBInspectable var fullyRounded: Bool = true {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
+    @IBInspectable var cornerRadius: CGFloat = 8 {
         didSet {
             setNeedsLayout()
         }
@@ -36,11 +42,13 @@ import UIKit
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        if isRounded {
+        if fullyRounded {
             layer.cornerRadius = bounds.height / 2
-            layer.cornerCurve = .continuous
-            layer.masksToBounds = isMasksToBounds
-            clipsToBounds = isMasksToBounds
+        } else {
+            layer.cornerRadius = cornerRadius
         }
+        layer.cornerCurve = .continuous
+        layer.masksToBounds = isMasksToBounds
+        clipsToBounds = isMasksToBounds
     }
 }
