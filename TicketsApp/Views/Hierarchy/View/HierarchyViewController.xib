@@ -96,13 +96,13 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="227" height="24"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Real Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-SM-rfP">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="24"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                             <color key="textColor" name="primaryText"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izs-ER-XWb" customClass="RoundedView" customModule="TicketsApp" customModuleProvider="target">
-                                                                            <rect key="frame" x="195" y="0.0" width="32" height="24"/>
+                                                                            <rect key="frame" x="97.666666666666657" y="0.0" width="32" height="24"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT0-87-4M5">
                                                                                     <rect key="frame" x="6.9999999999999982" y="5.0000000000000009" width="18.333333333333329" height="14.333333333333336"/>
@@ -126,6 +126,10 @@
                                                                                     <color key="value" name="cardBackground"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAY-v5-hRd">
+                                                                            <rect key="frame" x="137.66666666666666" y="0.0" width="89.333333333333343" height="24"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         </view>
                                                                     </subviews>
                                                                 </stackView>
